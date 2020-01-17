@@ -1,0 +1,2127 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+	<title>이천훈련원</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="apple-mobile-web-app-title" content="이천훈련원" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<link rel="stylesheet" type="text/css" href="/front/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/front/css/ic.css">
+	<link rel="stylesheet" type="text/css" href="/front/css/fonts/NanumSquare.css">
+	<link rel="stylesheet" type="text/css" href="/front/css/library/flatpickr/flatpickr.min.css">
+
+  <script src="/front/js/library/flatpickr/flatpickr.js"></script>
+  <script src="/front/js/library/flatpickr/language_ko.js"></script>
+  
+	<script src="/front/js/library/vue/vue.min.js"></script>
+  <script src="/front/js/library/vue/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-flatpickr-component@8"></script>
+
+	<script src="/front/js/library/es6-promise.min.js"></script>
+	<script src="/front/js/library/es6-promise.auto.min.js"></script>
+  <script src="/front/js/library/polyfill.min.js"></script>
+  
+  <script src="/front/js/library/jquery/jquery-3.4.1.min.js"></script>
+  <script>
+    var selected_item=new Vue({
+      el:"#selected_item",
+      data:{
+        AA:[{seq: 'AA0001', title: '서울특별시 강남구' },{seq: 'AA0002', title: '서울특별시 강동구' },{seq: 'AA0003', title: '서울특별시 강북구' },{seq: 'AA0004', title: '서울특별시 강서구' },{seq: 'AA0005', title: '서울특별시 관악구' },{seq: 'AA0006', title: '서울특별시 광진구' },{seq: 'AA0007', title: '서울특별시 구로구' },{seq: 'AA0008', title: '서울특별시 금천구' },{seq: 'AA0009', title: '서울특별시 노원구' },{seq: 'AA0010', title: '서울특별시 도봉구' },{seq: 'AA0011', title: '서울특별시 동대문구' },{seq: 'AA0012', title: '서울특별시 동작구' },{seq: 'AA0013', title: '서울특별시 마포구' },{seq: 'AA0014', title: '서울특별시 서대문구' },{seq: 'AA0015', title: '서울특별시 서초구' },{seq: 'AA0016', title: '서울특별시 성동구' },{seq: 'AA0017', title: '서울특별시 성북구' },{seq: 'AA0018', title: '서울특별시 송파구' },{seq: 'AA0019', title: '서울특별시 양천구' },{seq: 'AA0020', title: '서울특별시 영등포구' },{seq: 'AA0021', title: '서울특별시 용산구' },{seq: 'AA0022', title: '서울특별시 은평구' },{seq: 'AA0023', title: '서울특별시 종로구' },{seq: 'AA0024', title: '서울특별시 중구' },{seq: 'AA0025', title: '서울특별시 중랑구' },{seq: 'AA0026', title: '부산광역시 강서구' },{seq: 'AA0027', title: '부산광역시 금정구' },{seq: 'AA0028', title: '부산광역시 기장군' },{seq: 'AA0029', title: '부산광역시 남구' },{seq: 'AA0030', title: '부산광역시 동구' },{seq: 'AA0031', title: '부산광역시 동래구' },{seq: 'AA0032', title: '부산광역시 부산진구' },{seq: 'AA0033', title: '부산광역시 북구' },{seq: 'AA0034', title: '부산광역시 사상구' },{seq: 'AA0035', title: '부산광역시 사하구' },{seq: 'AA0036', title: '부산광역시 서구' },{seq: 'AA0037', title: '부산광역시 수영구' },{seq: 'AA0038', title: '부산광역시 연제구' },{seq: 'AA0039', title: '부산광역시 영도구' },{seq: 'AA0040', title: '부산광역시 중구' },{seq: 'AA0041', title: '부산광역시 해운대구' },{seq: 'AA0042', title: '대구광역시 남구' },{seq: 'AA0043', title: '대구광역시 달서구' },{seq: 'AA0044', title: '대구광역시 달성군' },{seq: 'AA0045', title: '대구광역시 동구' },{seq: 'AA0046', title: '대구광역시 북구' },{seq: 'AA0047', title: '대구광역시 서구' },{seq: 'AA0048', title: '대구광역시 수성구' },{seq: 'AA0049', title: '대구광역시 중구' },{seq: 'AA0050', title: '인천광역시 강화군' },{seq: 'AA0051', title: '인천광역시 계양구' },{seq: 'AA0052', title: '인천광역시 남구' },{seq: 'AA0053', title: '인천광역시 남동구' },{seq: 'AA0054', title: '인천광역시 동구' },{seq: 'AA0055', title: '인천광역시 부평구' },{seq: 'AA0056', title: '인천광역시 서구' },{seq: 'AA0057', title: '인천광역시 연수구' },{seq: 'AA0058', title: '인천광역시 옹진군' },{seq: 'AA0059', title: '인천광역시 중구' },{seq: 'AA0060', title: '광주광역시 광산구' },{seq: 'AA0061', title: '광주광역시 남구' },{seq: 'AA0062', title: '광주광역시 동구' },{seq: 'AA0063', title: '광주광역시 북구' },{seq: 'AA0064', title: '광주광역시 서구' },{seq: 'AA0065', title: '대전광역시 대덕구' },{seq: 'AA0066', title: '대전광역시 동구' },{seq: 'AA0067', title: '대전광역시 서구' },{seq: 'AA0068', title: '대전광역시 유성구' },{seq: 'AA0069', title: '대전광역시 중구' },{seq: 'AA0070', title: '울산광역시 남구' },{seq: 'AA0071', title: '울산광역시 동구' },{seq: 'AA0072', title: '울산광역시 북구' },{seq: 'AA0073', title: '울산광역시 울주군' },{seq: 'AA0074', title: '울산광역시 중구' },{seq: 'AA0075', title: '경기도 가평군' },{seq: 'AA0076', title: '경기도 고양시 덕양구' },{seq: 'AA0077', title: '경기도 고양시 일산동구' },{seq: 'AA0078', title: '경기도 고양시 일산서구' },{seq: 'AA0079', title: '경기도 과천시' },{seq: 'AA0080', title: '경기도 광명시' },{seq: 'AA0081', title: '경기도 광주시' },{seq: 'AA0082', title: '경기도 구리시' },{seq: 'AA0083', title: '경기도 군포시' },{seq: 'AA0084', title: '경기도 김포시' },{seq: 'AA0085', title: '경기도 남양주시' },{seq: 'AA0086', title: '경기도 동두천시' },{seq: 'AA0087', title: '경기도 부천시 소사구' },{seq: 'AA0088', title: '경기도 부천시 오정구' },{seq: 'AA0089', title: '경기도 부천시 원미구' },{seq: 'AA0090', title: '경기도 성남시' },{seq: 'AA0091', title: '경기도 성남시 분당구' },{seq: 'AA0092', title: '경기도 성남시 수정구' },{seq: 'AA0093', title: '경기도 성남시 중원구' },{seq: 'AA0094', title: '경기도 수원시' },{seq: 'AA0095', title: '경기도 수원시 권선구' },{seq: 'AA0096', title: '경기도 수원시 영통구' },{seq: 'AA0097', title: '경기도 수원시 장안구' },{seq: 'AA0098', title: '경기도 수원시 팔달구' },{seq: 'AA0099', title: '경기도 시흥시' },{seq: 'AA0100', title: '경기도 안산시 단원구' },{seq: 'AA0101', title: '경기도 안산시 상록구' },{seq: 'AA0102', title: '경기도 안성시' },{seq: 'AA0103', title: '경기도 안양시' },{seq: 'AA0104', title: '경기도 안양시 동안구' },{seq: 'AA0105', title: '경기도 안양시 만안구' },{seq: 'AA0106', title: '경기도 양주시' },{seq: 'AA0107', title: '경기도 양평군' },{seq: 'AA0108', title: '경기도 여주시' },{seq: 'AA0109', title: '경기도 연천군' },{seq: 'AA0110', title: '경기도 오산시' },{seq: 'AA0111', title: '경기도 용인시' },{seq: 'AA0112', title: '경기도 용인시 기흥구' },{seq: 'AA0113', title: '경기도 용인시 수지구' },{seq: 'AA0114', title: '경기도 용인시 처인구' },{seq: 'AA0115', title: '경기도 의왕시' },{seq: 'AA0116', title: '경기도 의정부시' },{seq: 'AA0117', title: '경기도 이천시' },{seq: 'AA0118', title: '경기도 파주시' },{seq: 'AA0119', title: '경기도 평택시' },{seq: 'AA0120', title: '경기도 포천시' },{seq: 'AA0121', title: '경기도 하남시' },{seq: 'AA0122', title: '경기도 화성시' },{seq: 'AA0123', title: '강원도 강릉시' },{seq: 'AA0124', title: '강원도 고성군' },{seq: 'AA0125', title: '강원도 동해시' },{seq: 'AA0126', title: '강원도 삼척시' },{seq: 'AA0127', title: '강원도 속초시' },{seq: 'AA0128', title: '강원도 양구군' },{seq: 'AA0129', title: '강원도 양양군' },{seq: 'AA0130', title: '강원도 영월군' },{seq: 'AA0131', title: '강원도 원주시' },{seq: 'AA0132', title: '강원도 인제군' },{seq: 'AA0133', title: '강원도 정선군' },{seq: 'AA0134', title: '강원도 철원군' },{seq: 'AA0135', title: '강원도 춘천시' },{seq: 'AA0136', title: '강원도 태백시' },{seq: 'AA0137', title: '강원도 평창군' },{seq: 'AA0138', title: '강원도 홍천군' },{seq: 'AA0139', title: '강원도 화천군' },{seq: 'AA0140', title: '강원도 횡성군' },{seq: 'AA0141', title: '충청북도 괴산군' },{seq: 'AA0142', title: '충청북도 단양군' },{seq: 'AA0143', title: '충청북도 보은군' },{seq: 'AA0144', title: '충청북도 영동군' },{seq: 'AA0145', title: '충청북도 옥천군' },{seq: 'AA0146', title: '충청북도 음성군' },{seq: 'AA0147', title: '충청북도 제천시' },{seq: 'AA0148', title: '충청북도 증평군' },{seq: 'AA0149', title: '충청북도 진천군' },{seq: 'AA0150', title: '충청북도 청원군' },{seq: 'AA0151', title: '충청북도 청주시 상당구' },{seq: 'AA0152', title: '충청북도 청주시 흥덕구' },{seq: 'AA0153', title: '충청북도 충주시' },{seq: 'AA0154', title: '충청남도 계룡시' },{seq: 'AA0155', title: '충청남도 공주시' },{seq: 'AA0156', title: '충청남도 금산군' },{seq: 'AA0157', title: '충청남도 논산시' },{seq: 'AA0158', title: '충청남도 당진시' },{seq: 'AA0159', title: '충청남도 보령시' },{seq: 'AA0160', title: '충청남도 부여군' },{seq: 'AA0161', title: '충청남도 서산시' },{seq: 'AA0162', title: '충청남도 서천군' },{seq: 'AA0163', title: '충청남도 아산시' },{seq: 'AA0164', title: '충청남도 예산군' },{seq: 'AA0165', title: '충청남도 천안시' },{seq: 'AA0166', title: '충청남도 천안시 동남구' },{seq: 'AA0167', title: '충청남도 천안시 서북구' },{seq: 'AA0168', title: '충청남도 청양군' },{seq: 'AA0169', title: '충청남도 태안군' },{seq: 'AA0170', title: '충청남도 홍성군' },{seq: 'AA0171', title: '전라북도 고창군' },{seq: 'AA0172', title: '전라북도 군산시' },{seq: 'AA0173', title: '전라북도 김제시' },{seq: 'AA0174', title: '전라북도 남원시' },{seq: 'AA0175', title: '전라북도 무주군' },{seq: 'AA0176', title: '전라북도 부안군' },{seq: 'AA0177', title: '전라북도 순창군' },{seq: 'AA0178', title: '전라북도 완주군' },{seq: 'AA0179', title: '전라북도 익산시' },{seq: 'AA0180', title: '전라북도 임실군' },{seq: 'AA0181', title: '전라북도 장수군' },{seq: 'AA0182', title: '전라북도 전주시 덕진구' },{seq: 'AA0183', title: '전라북도 전주시 완산구' },{seq: 'AA0184', title: '전라북도 정읍시' },{seq: 'AA0185', title: '전라북도 진안군' },{seq: 'AA0186', title: '전라남도 강진군' },{seq: 'AA0187', title: '전라남도 고흥군' },{seq: 'AA0188', title: '전라남도 곡성군' },{seq: 'AA0189', title: '전라남도 광양시' },{seq: 'AA0190', title: '전라남도 구례군' },{seq: 'AA0191', title: '전라남도 나주시' },{seq: 'AA0192', title: '전라남도 담양군' },{seq: 'AA0193', title: '전라남도 목포시' },{seq: 'AA0194', title: '전라남도 무안군' },{seq: 'AA0195', title: '전라남도 보성군' },{seq: 'AA0196', title: '전라남도 순천시' },{seq: 'AA0197', title: '전라남도 신안군' },{seq: 'AA0198', title: '전라남도 여수시' },{seq: 'AA0199', title: '전라남도 영광군' },{seq: 'AA0200', title: '전라남도 영암군' },{seq: 'AA0201', title: '전라남도 완도군' },{seq: 'AA0202', title: '전라남도 장성군' },{seq: 'AA0203', title: '전라남도 장흥군' },{seq: 'AA0204', title: '전라남도 진도군' },{seq: 'AA0205', title: '전라남도 함평군' },{seq: 'AA0206', title: '전라남도 해남군' },{seq: 'AA0207', title: '전라남도 화순군' },{seq: 'AA0208', title: '경상북도 경산시' },{seq: 'AA0209', title: '경상북도 경주시' },{seq: 'AA0210', title: '경상북도 고령군' },{seq: 'AA0211', title: '경상북도 구미시' },{seq: 'AA0212', title: '경상북도 군위군' },{seq: 'AA0213', title: '경상북도 김천시' },{seq: 'AA0214', title: '경상북도 문경시' },{seq: 'AA0215', title: '경상북도 봉화군' },{seq: 'AA0216', title: '경상북도 상주시' },{seq: 'AA0217', title: '경상북도 성주군' },{seq: 'AA0218', title: '경상북도 안동시' },{seq: 'AA0219', title: '경상북도 영덕군' },{seq: 'AA0220', title: '경상북도 영양군' },{seq: 'AA0221', title: '경상북도 영주시' },{seq: 'AA0222', title: '경상북도 영천시' },{seq: 'AA0223', title: '경상북도 예천군' },{seq: 'AA0224', title: '경상북도 울릉군' },{seq: 'AA0225', title: '경상북도 울진군' },{seq: 'AA0226', title: '경상북도 의성군' },{seq: 'AA0227', title: '경상북도 청도군' },{seq: 'AA0228', title: '경상북도 청송군' },{seq: 'AA0229', title: '경상북도 칠곡군' },{seq: 'AA0230', title: '경상북도 포항시' },{seq: 'AA0231', title: '경상북도 포항시 남구' },{seq: 'AA0232', title: '경상북도 포항시 북구' },{seq: 'AA0233', title: '경상남도 거제시' },{seq: 'AA0234', title: '경상남도 거창군' },{seq: 'AA0235', title: '경상남도 고성군' },{seq: 'AA0236', title: '경상남도 김해시' },{seq: 'AA0237', title: '경상남도 남해군' },{seq: 'AA0238', title: '경상남도 밀양시' },{seq: 'AA0239', title: '경상남도 사천시' },{seq: 'AA0240', title: '경상남도 산청군' },{seq: 'AA0241', title: '경상남도 양산시' },{seq: 'AA0242', title: '경상남도 의령군' },{seq: 'AA0243', title: '경상남도 진주시' },{seq: 'AA0244', title: '경상남도 창녕군' },{seq: 'AA0245', title: '경상남도 창원시' },{seq: 'AA0246', title: '경상남도 창원시 마산합포구' },{seq: 'AA0247', title: '경상남도 창원시 마산회원구' },{seq: 'AA0248', title: '경상남도 창원시 성산구' },{seq: 'AA0249', title: '경상남도 창원시 의창구' },{seq: 'AA0250', title: '경상남도 창원시 진해구' },{seq: 'AA0251', title: '경상남도 통영시' },{seq: 'AA0252', title: '경상남도 하동군' },{seq: 'AA0253', title: '경상남도 함안군' },{seq: 'AA0254', title: '경상남도 함양군' },{seq: 'AA0255', title: '경상남도 합천군' },{seq: 'AA0256', title: '제주도 서귀포시' },{seq: 'AA0257', title: '제주도 제주시' }],DG:[{seq: 'DG0001', title: '없음' },{seq: 'DG0002', title: '1급' },{seq: 'DG0003', title: '2급' },{seq: 'DG0004', title: '3급' }],DS:[{seq: 'DS0001', title: '비장애인' },{seq: 'DS0002', title: '장애인' }],DT:[{seq: 'DT0001', title: '없음' },{seq: 'DT0002', title: '지체장애' },{seq: 'DT0003', title: '뇌병변장애' },{seq: 'DT0004', title: '시각장애' },{seq: 'DT0005', title: '청각장애' },{seq: 'DT0006', title: '지적장애' },{seq: 'DT0007', title: '척수장애' },{seq: 'DT0008', title: '절단 및 기타장애' }],FL:[{seq: 'FL0001', title: '1' },{seq: 'FL0002', title: '2' },{seq: 'FL0003', title: '3' },{seq: 'FL0004', title: '4' }],FT:[{seq: 'FT0001', title: '숙소' },{seq: 'FT0002', title: '시설' }],G2:[{seq: 'G20001', title: '남' },{seq: 'G20002', title: '여' },{seq: 'G20003', title: '통합' }],GD:[{seq: 'GD0001', title: '남' },{seq: 'GD0002', title: '여' }],IO:[{seq: 'IO0001', title: '촌외훈련' },{seq: 'IO0002', title: '대회참가' },{seq: 'IO0003', title: '병원, 약국' },{seq: 'IO0004', title: '학교' },{seq: 'IO0005', title: '관공서' },{seq: 'IO0006', title: '경조사' },{seq: 'IO0007', title: '용품수리' },{seq: 'IO0008', title: '물품구입' },{seq: 'IO0009', title: '종교활동' },{seq: 'IO0010', title: '연맹, 협회' },{seq: 'IO0011', title: '팀회식' },{seq: 'IO0012', title: '주말외출' },{seq: 'IO0013', title: '주말외박' },{seq: 'IO0014', title: '기타' }],NT:[{seq: 'NT0001', title: '일반공지' },{seq: 'NT0002', title: '긴급공지' }],PM:[{seq: 'PM0001', title: '게스트' },{seq: 'PM0002', title: '종목별 지도자' },{seq: 'PM0003', title: '훈련원 관리자' },{seq: 'PM0004', title: '단체 대표자' },{seq: 'PM0005', title: '권한대기' }],PS:[{seq: 'PS0001', title: '감독' },{seq: 'PS0002', title: '코치' },{seq: 'PS0004', title: '선수' },{seq: 'PS0003', title: '트레이너' },{seq: 'PS0005', title: '선수파트너' },{seq: 'PS0006', title: '경기보조' },{seq: 'PS0007', title: '생활보조' },{seq: 'PS0009', title: '경기임원' },{seq: 'PS0010', title: '주무' }],PT:[{seq: 'PT0001', title: '국가대표' },{seq: 'PT0002', title: '후보선수' },{seq: 'PT0003', title: '신인선수' }],QT:[{seq: 'QT0001', title: '생활관(01)' },{seq: 'QT0002', title: '생활관(02)' },{seq: 'QT0003', title: '생활관(03)' },{seq: 'QT0004', title: '생활관(04)' },{seq: 'QT0013', title: '교육연수동(01)' },{seq: 'QT0014', title: '교육연수동(02)' },{seq: 'QT0015', title: '7인제 축구장' },{seq: 'QT0016', title: '테니스장' },{seq: 'QT0017', title: '컬링장' },{seq: 'QT0018', title: '다기능체육관(01)' },{seq: 'QT0019', title: '다기능체육관(02)' },{seq: 'QT0020', title: '종합체육동(03)' },{seq: 'QT0021', title: '평창트레이닝센터' },{seq: 'QT0009', title: '대운동장' },{seq: 'QT0011', title: '종합체육동(01)' }],RT:[{seq: 'RT0001', title: '시설대관' },{seq: 'RT0002', title: '견학' }],SP:[{seq: 'SP0001', title: '골볼' },{seq: 'SP0002', title: '노르딕스키' },{seq: 'SP0003', title: '론볼' },{seq: 'SP0004', title: '배드민턴' },{seq: 'SP0005', title: '보치아' },{seq: 'SP0006', title: '볼링' },{seq: 'SP0007', title: '사격' },{seq: 'SP0008', title: '사이클' },{seq: 'SP0009', title: '수영' },{seq: 'SP0010', title: '스노우보드' },{seq: 'SP0011', title: '아이스슬레지하키' },{seq: 'SP0012', title: '알파인스키' },{seq: 'SP0013', title: '양궁' },{seq: 'SP0014', title: '역도' },{seq: 'SP0015', title: '요트' },{seq: 'SP0016', title: '유도' },{seq: 'SP0017', title: '육상' },{seq: 'SP0018', title: '배구' },{seq: 'SP0019', title: '조정' },{seq: 'SP0020', title: '축구' },{seq: 'SP0021', title: '탁구' },{seq: 'SP0022', title: '태권도' },{seq: 'SP0023', title: '농구' },{seq: 'SP0024', title: '휠체어댄스' },{seq: 'SP0025', title: '럭비' },{seq: 'SP0026', title: '컬링' },{seq: 'SP0027', title: '테니스' },{seq: 'SP0028', title: '펜싱' },{seq: 'SP0029', title: '쇼다운' },{seq: 'SP0030', title: '체스' },{seq: 'SP0031', title: 'e스포츠' },{seq: 'SP0032', title: '게이트볼' },{seq: 'SP0033', title: '골프' },{seq: 'SP0034', title: '승마' },{seq: 'SP0035', title: '검도' },{seq: 'SP0036', title: '소프트볼야구' },{seq: 'SP0037', title: '바둑' },{seq: 'SP0038', title: '당구' },{seq: 'SP0039', title: '다트' },{seq: 'SP0040', title: '바이애슬론' },{seq: 'SP0041', title: '(기타)' }],ST:[{seq: 'ST0001', title: '임시파일' },{seq: 'ST0002', title: '요청' },{seq: 'ST0003', title: '승인' }],TP:[{seq: 'TP0001', title: '국가대표' },{seq: 'TP0002', title: '신인선수' },{seq: 'TP0003', title: '후보선수' },{seq: 'TP0004', title: '상시훈련' },{seq: 'TP0005', title: '자비부담' },{seq: 'TP0006', title: '농아인올림픽' },{seq: 'TP0007', title: '스페셜올림픽' },{seq: 'TP0008', title: 'IBSA세계대회' },{seq: 'TP0009', title: '기타' }],UE:[{seq: 'UE0001', title: 'C' },{seq: 'UE0002', title: 'H' },{seq: 'UF0003', title: 'F' },{seq: 'UF0004', title: 'R' }],UT:[{seq: 'UT0001', title: '훈련' },{seq: 'UT0002', title: '대관' }],
+        association: [{seq: '30', title: '대한장애인검도협회' },{seq: '27', title: '대한장애인게이트볼연맹' },{seq: '2', title: '대한장애인골볼협회' },{seq: '28', title: '대한장애인골프협회' },{seq: '3', title: '대한장애인노르딕스키연맹' },{seq: '1', title: '대한장애인농구협회' },{seq: '34', title: '대한장애인다트연맹' },{seq: '33', title: '대한장애인당구협회' },{seq: '22', title: '대한장애인럭비협회' },{seq: '4', title: '대한장애인론볼연맹' },{seq: '17', title: '대한장애인배구협회' },{seq: '5', title: '대한장애인배드민턴협회' },{seq: '6', title: '대한장애인보치아연맹' },{seq: '7', title: '대한장애인볼링협회' },{seq: '8', title: '대한장애인사격연맹' },{seq: '9', title: '대한장애인사이클연맹' },{seq: '31', title: '대한장애인소프트볼야구협회' },{seq: '10', title: '대한장애인수영연맹' },{seq: '37', title: '대한장애인스키협회(스노우보드)' },{seq: '38', title: '대한장애인스키협회(알파인스키)' },{seq: '29', title: '대한장애인승마협회' },{seq: '11', title: '대한장애인아이스하키협회' },{seq: '12', title: '대한장애인양궁협회' },{seq: '13', title: '대한장애인역도연맹' },{seq: '14', title: '대한장애인요트연맹' },{seq: '15', title: '대한장애인유도협회' },{seq: '16', title: '대한장애인육상연맹' },{seq: '18', title: '대한장애인조정연맹' },{seq: '19', title: '대한장애인축구협회' },{seq: '23', title: '대한장애인컬링협회' },{seq: '20', title: '대한장애인탁구협회' },{seq: '21', title: '대한장애인태권도협회' },{seq: '24', title: '대한장애인테니스협회' },{seq: '25', title: '대한장애인펜싱협회' },{seq: '26', title: '대한장애인e스포츠연맹' },{seq: '32', title: '전국장애인바둑협회' }],
+        department: [{seq: '5', title: '소속관리부' },{seq: '3', title: '시설관리부' },{seq: '7', title: '행사관리부' }],
+        facility_rental: [{seq: '178', number: '400m 트랙', price: '200000' },{seq: '164', number: '7인제 축구장', price: '200000' },{seq: '170', number: '강사대기실', price: '50000' },{seq: '166', number: '강의실1', price: '200000' },{seq: '167', number: '강의실2', price: '200000' },{seq: '168', number: '강의실3', price: '200000' },{seq: '102', number: '골볼장', price: '200000' },{seq: '165', number: '교육연수팀', price: '200000' },{seq: '172', number: '대강당', price: '500000' },{seq: '171', number: '대강의실', price: '250000' },{seq: '174', number: '미팅룸1', price: '50000' },{seq: '175', number: '미팅룸2', price: '50000' },{seq: '176', number: '미팅룸3', price: '50000' },{seq: '177', number: '미팅룸4', price: '50000' },{seq: '183', number: '배드민턴장', price: '0' },{seq: '181', number: '사격장10M', price: '200000' },{seq: '119', number: '사격장25M', price: '0' },{seq: '182', number: '사격장50M', price: '0' },{seq: '110', number: '삼성관', price: '600000' },{seq: '184', number: '선수식당', price: '0' },{seq: '117', number: '수영장', price: '600000' },{seq: '118', number: '양궁장', price: '0' },{seq: '113', number: '역도장', price: '200000' },{seq: '115', number: '유도장', price: '200000' },{seq: '169', number: '접견실', price: '100000' },{seq: '173', number: '중회의실', price: '100000' },{seq: '121', number: '체력단련실', price: '0' },{seq: '104', number: '축구장', price: '400000' },{seq: '122', number: '컬링장', price: '0' },{seq: '114', number: '탁구장', price: '200000' },{seq: '185', number: '태권도장', price: '0' },{seq: '108', number: '테니스장', price: '0' },{seq: '103', number: '테니스장(실내)', price: '400000' },{seq: '186', number: '트레이닝센터', price: '0' },{seq: '116', number: '펜싱장', price: '600000' },{seq: '179', number: '회의실', price: '50000' },{seq: '180', number: '훈련용기구 기술지원센터', price: '0' }],
+        facility: [{seq: '1', number: '101', quarter_seq: 'QT0001' },{seq: '2', number: '102', quarter_seq: 'QT0001' },{seq: '3', number: '103', quarter_seq: 'QT0001' },{seq: '4', number: '104', quarter_seq: 'QT0001' },{seq: '5', number: '105', quarter_seq: 'QT0001' },{seq: '12', number: '106', quarter_seq: 'QT0001' },{seq: '13', number: '107', quarter_seq: 'QT0001' },{seq: '14', number: '108', quarter_seq: 'QT0001' },{seq: '15', number: '109', quarter_seq: 'QT0001' },{seq: '16', number: '110', quarter_seq: 'QT0001' },{seq: '17', number: '111', quarter_seq: 'QT0001' },{seq: '18', number: '112', quarter_seq: 'QT0001' },{seq: '19', number: '113', quarter_seq: 'QT0001' },{seq: '20', number: '114', quarter_seq: 'QT0001' },{seq: '21', number: '115', quarter_seq: 'QT0001' },{seq: '22', number: '116', quarter_seq: 'QT0001' },{seq: '6', number: '201', quarter_seq: 'QT0002' },{seq: '7', number: '202', quarter_seq: 'QT0002' },{seq: '8', number: '203', quarter_seq: 'QT0002' },{seq: '9', number: '204', quarter_seq: 'QT0002' },{seq: '10', number: '205', quarter_seq: 'QT0002' },{seq: '23', number: '206', quarter_seq: 'QT0002' },{seq: '24', number: '207', quarter_seq: 'QT0002' },{seq: '25', number: '208', quarter_seq: 'QT0002' },{seq: '26', number: '209', quarter_seq: 'QT0002' },{seq: '27', number: '210', quarter_seq: 'QT0002' },{seq: '28', number: '211', quarter_seq: 'QT0002' },{seq: '29', number: '212', quarter_seq: 'QT0002' },{seq: '30', number: '213', quarter_seq: 'QT0002' },{seq: '31', number: '214', quarter_seq: 'QT0002' },{seq: '32', number: '215', quarter_seq: 'QT0002' },{seq: '33', number: '216', quarter_seq: 'QT0002' },{seq: '34', number: '217', quarter_seq: 'QT0002' },{seq: '35', number: '218', quarter_seq: 'QT0002' },{seq: '36', number: '219', quarter_seq: 'QT0002' },{seq: '37', number: '220', quarter_seq: 'QT0002' },{seq: '38', number: '221', quarter_seq: 'QT0002' },{seq: '39', number: '222', quarter_seq: 'QT0002' },{seq: '40', number: '223', quarter_seq: 'QT0002' },{seq: '41', number: '224', quarter_seq: 'QT0002' },{seq: '42', number: '225', quarter_seq: 'QT0002' },{seq: '43', number: '226', quarter_seq: 'QT0002' },{seq: '44', number: '227', quarter_seq: 'QT0002' },{seq: '45', number: '228', quarter_seq: 'QT0002' },{seq: '11', number: '301', quarter_seq: 'QT0003' },{seq: '47', number: '302', quarter_seq: 'QT0003' },{seq: '48', number: '303', quarter_seq: 'QT0003' },{seq: '49', number: '304', quarter_seq: 'QT0003' },{seq: '50', number: '305', quarter_seq: 'QT0003' },{seq: '51', number: '306', quarter_seq: 'QT0003' },{seq: '52', number: '307', quarter_seq: 'QT0003' },{seq: '53', number: '308', quarter_seq: 'QT0003' },{seq: '54', number: '309', quarter_seq: 'QT0003' },{seq: '55', number: '310', quarter_seq: 'QT0003' },{seq: '56', number: '311', quarter_seq: 'QT0003' },{seq: '57', number: '312', quarter_seq: 'QT0003' },{seq: '58', number: '313', quarter_seq: 'QT0003' },{seq: '59', number: '314', quarter_seq: 'QT0003' },{seq: '60', number: '315', quarter_seq: 'QT0003' },{seq: '61', number: '316', quarter_seq: 'QT0003' },{seq: '62', number: '317', quarter_seq: 'QT0003' },{seq: '63', number: '318', quarter_seq: 'QT0003' },{seq: '64', number: '319', quarter_seq: 'QT0003' },{seq: '65', number: '320', quarter_seq: 'QT0003' },{seq: '66', number: '321', quarter_seq: 'QT0003' },{seq: '67', number: '322', quarter_seq: 'QT0003' },{seq: '68', number: '323', quarter_seq: 'QT0003' },{seq: '69', number: '324', quarter_seq: 'QT0003' },{seq: '70', number: '325', quarter_seq: 'QT0003' },{seq: '71', number: '326', quarter_seq: 'QT0003' },{seq: '72', number: '327', quarter_seq: 'QT0003' },{seq: '73', number: '328', quarter_seq: 'QT0003' },{seq: '178', number: '400m 트랙', quarter_seq: 'QT0009' },{seq: '74', number: '401', quarter_seq: 'QT0004' },{seq: '75', number: '402', quarter_seq: 'QT0004' },{seq: '76', number: '403', quarter_seq: 'QT0004' },{seq: '77', number: '404', quarter_seq: 'QT0004' },{seq: '78', number: '405', quarter_seq: 'QT0004' },{seq: '79', number: '406', quarter_seq: 'QT0004' },{seq: '80', number: '407', quarter_seq: 'QT0004' },{seq: '81', number: '408', quarter_seq: 'QT0004' },{seq: '82', number: '409', quarter_seq: 'QT0004' },{seq: '83', number: '410', quarter_seq: 'QT0004' },{seq: '84', number: '411', quarter_seq: 'QT0004' },{seq: '85', number: '412', quarter_seq: 'QT0004' },{seq: '86', number: '413', quarter_seq: 'QT0004' },{seq: '87', number: '414', quarter_seq: 'QT0004' },{seq: '88', number: '415', quarter_seq: 'QT0004' },{seq: '89', number: '416', quarter_seq: 'QT0004' },{seq: '90', number: '417', quarter_seq: 'QT0004' },{seq: '91', number: '418', quarter_seq: 'QT0004' },{seq: '92', number: '419', quarter_seq: 'QT0004' },{seq: '93', number: '420', quarter_seq: 'QT0004' },{seq: '94', number: '421', quarter_seq: 'QT0004' },{seq: '95', number: '422', quarter_seq: 'QT0004' },{seq: '96', number: '423', quarter_seq: 'QT0004' },{seq: '97', number: '424', quarter_seq: 'QT0004' },{seq: '98', number: '425', quarter_seq: 'QT0004' },{seq: '99', number: '426', quarter_seq: 'QT0004' },{seq: '162', number: '427', quarter_seq: 'QT0004' },{seq: '101', number: '428', quarter_seq: 'QT0004' },{seq: '164', number: '7인제 축구장', quarter_seq: 'QT0015' },{seq: '170', number: '강사대기실', quarter_seq: 'QT0013' },{seq: '166', number: '강의실1', quarter_seq: 'QT0013' },{seq: '167', number: '강의실2', quarter_seq: 'QT0013' },{seq: '168', number: '강의실3', quarter_seq: 'QT0013' },{seq: '102', number: '골볼장', quarter_seq: 'QT0011' },{seq: '165', number: '교육연수팀', quarter_seq: 'QT0013' },{seq: '172', number: '대강당', quarter_seq: 'QT0013' },{seq: '171', number: '대강의실', quarter_seq: 'QT0013' },{seq: '174', number: '미팅룸1', quarter_seq: 'QT0014' },{seq: '175', number: '미팅룸2', quarter_seq: 'QT0014' },{seq: '176', number: '미팅룸3', quarter_seq: 'QT0014' },{seq: '177', number: '미팅룸4', quarter_seq: 'QT0014' },{seq: '183', number: '배드민턴장', quarter_seq: 'QT0011' },{seq: '181', number: '사격장10M', quarter_seq: 'QT0018' },{seq: '119', number: '사격장25M', quarter_seq: 'QT0019' },{seq: '182', number: '사격장50M', quarter_seq: 'QT0019' },{seq: '110', number: '삼성관', quarter_seq: 'QT0011' },{seq: '184', number: '선수식당', quarter_seq: 'QT0011' },{seq: '117', number: '수영장', quarter_seq: 'QT0011' },{seq: '118', number: '양궁장', quarter_seq: 'QT0019' },{seq: '113', number: '역도장', quarter_seq: 'QT0020' },{seq: '115', number: '유도장', quarter_seq: 'QT0011' },{seq: '169', number: '접견실', quarter_seq: 'QT0013' },{seq: '173', number: '중회의실', quarter_seq: 'QT0014' },{seq: '121', number: '체력단련실', quarter_seq: 'QT0020' },{seq: '104', number: '축구장', quarter_seq: 'QT0009' },{seq: '122', number: '컬링장', quarter_seq: 'QT0017' },{seq: '114', number: '탁구장', quarter_seq: 'QT0018' },{seq: '185', number: '태권도장', quarter_seq: 'QT0020' },{seq: '108', number: '테니스장', quarter_seq: 'QT0016' },{seq: '103', number: '테니스장(실내)', quarter_seq: 'QT0016' },{seq: '186', number: '트레이닝센터', quarter_seq: 'QT0021' },{seq: '116', number: '펜싱장', quarter_seq: 'QT0011' },{seq: '179', number: '회의실', quarter_seq: 'QT0017' },{seq: '180', number: '훈련용기구 기술지원센터', quarter_seq: 'QT0018' }],
+        program: [{seq: '1', title: '제1프로그램' },{seq: '2', title: '제2프로그램' },{seq: '3', title: '제3프로그램' },{seq: '4', title: '제4프로그램' },{seq: '5', title: '제5프로그램' }]
+      }
+    });
+    </script>
+	<script>
+		// ie10 이하에선 안내 문구
+		function iecheckTimer(){
+			setTimeout(function(){
+				if(document.getElementById("icContent")==null){
+					iecheckTimer();
+				}else{
+					if(navigator.userAgent.match(/msie 7/gi)!=null || navigator.userAgent.match(/msie 8/gi)!=null || navigator.userAgent.match(/msie 9/gi)!=null || navigator.userAgent.match(/msie 10/gi)!=null){
+						document.getElementsByTagName("html")[0].className="ielow";
+						document.body.innerHTML="<p class='ietxt'>IE 브라우저는 기본 사양인 11버전 이상에서 접속하시거나 크롬, 웨일 등의 표준 브라우저로 접속해 주십시오.</p>";
+					}
+				}
+			},7);
+		}
+		iecheckTimer();
+  </script>
+</head>
+<body>
+<!--#include virtual="/include/nav.asp"-->
+<div id="l_popup__dimm"></div>
+  <div id="nav" class="l_menuwrap" v-cloak>
+    <button class="tabidx" v-on:keyup.enter="headtitle.$refs.content.focus()">메뉴 건너뛰기</button>
+    <div class="l_logoarea">
+      <a class="l_logo m_ibarea" v-if="nav_list[0]!=undefined" v-bind:href="nav_list[0].uri">
+        <div><img src="/front/img/icon_logo.svg" alt="이천훈련원 메인화면으로 이동"></div>
+        <p>이천훈련원</p>
+      </a>
+    </div>
+    <div class="l_logininfo m_ibarea">
+      <div class="img"><img src="/front/img/icon_profile.svg" alt=""></div>
+      <div class="l_userinfo">
+        <p>프로그램 관리자</p>
+        <p>{삼겹살}</p>
+      </div>
+      <button @click="logout" ref="logout">
+        <div class="img"><img src="/front/img/icon_logout.svg" alt=""></div>
+        <span>로그아웃</span>
+      </button>
+    </div>
+    <nav>
+      <h2 class="hidden">이천훈련원 메뉴 목록</h2>
+      <template v-for="(list,key) in nav_list" :key="key" v-if="key!=0">
+        <div class="l_menuarea">
+          <button class="l_menu" v-bind:class="{s_on: check_depth1==key}" v-if="list.submenu!=undefined" @click="menuChoice(key, $event.target)" @focus="menuFocus(key, $event.target)">{{list.title}}</button>
+          <div class="l_submenu" v-bind:class="{s_on: check_depth1==key}" v-if="list.submenu!=undefined">
+            <div>
+              <a v-for="(sublist,key2) in list.submenu" :key="key2" v-bind:href="sublist.uri" v-bind:class="{s_on: depth1==key && key2==(depth2-1)}">{{sublist.title}}</a>
+            </div>
+          </div>
+          <a v-bind:href="list.uri" v-if="list.submenu==undefined" class="l_menu">{{list.title}}</a>
+        </div>
+      </template>
+    </nav>
+  </div>
+      
+	<h1 class="hidden">이천훈련원</h1>
+  <div id="contentHeader" class="l_content_header" v-cloak>
+    <div class="l_loc m_ibarea">
+      <div class="img icon_home"><img src="/front/img/icon_home.svg" alt=""></div>
+      <p>Home</p>
+      <div class="img icon_depth"><img src="/front/img/icon_depth.svg" alt=""></div>
+      <p>{{menu}}</p>
+      <div class="img icon_depth" v-if="submenu!=''"><img src="/front/img/icon_depth.svg" alt=""></div>
+      <p>{{submenu}}</p>
+    </div>
+  </div>
+<!--#include virtual="/include/content_header.asp"-->
+
+<div id="icContent_wrap">
+  <section id="icContent_admin" class="l_ct l_share_room" v-if="groupcode == 'ADMIN'" v-cloak>
+    <!-- s.관리자 페이지 숙소배정 -->
+    <div class="l_content">
+      <!-- 컨텐츠 영역. s. -->
+      <h2>숙소배정 및 승인</h2>
+    
+      <div class="l_search_box">
+        <div class="l_search_field">
+          <div class="l_field">
+            <label for="sdate">기간선택</label>
+            <div class="l_field__date">
+              <input type="text" name="a_date" id="sdate" class="sdate" placeholder="날짜선택" value="" v-model="sdate">
+              <button class="l_btn_calendar" style="left:226px;"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
+            </div>
+            <p class="l_field__s_character">~</p>
+            <div class="l_field__date">
+              <input type="text" name="edate" class="edate" placeholder="날짜선택" value="" v-model="edate">
+              <button class="l_btn_calendar"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
+            </div>
+          </div>
+          <div class="l_field">
+            <label for="sports">종목선택</label>
+            <select name="sports" id="sports" v-model="sports_seq">
+              <option value="">전체</option>
+              <option v-for="(option,key) in selectInfo.sports" :key="option.title" :value="option.seq">{{option.title}}</option>
+            </select>
+          </div>
+          <div class="l_search_btns">
+            <button type="submit" class="s_white" @click="loadRoomApply()">조회</button>
+          </div>
+        </div>
+      </div>
+  
+        <!-- 목록 테이블 형식. s. -->
+        <div class="l_list_box">
+          <div class="l_list_tablewrap top">
+            <table>
+              <caption>숙소배정 목록</caption>
+              <thead>
+                <tr>
+                  <th>
+                    <input class="s_list__checkBox_all" type="checkbox" name="list" value="" />
+                    <i class="m_list__checkBox_all" @click="clickCheckBoxAll()"></i>
+                  </th>
+                  <th>번호</th>
+                  <th>상태</th>
+                  <th>소속단체명</th>
+                  <th>종목</th>
+                  <th>성별</th>
+                  <th>훈련구분</th>
+                  <th>입촌기간</th>
+                  <th>인원수</th>
+                  <th>호실배정</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="l_list__table_tr" v-for="(list,key) in assignInfo" :key="key" @click="loadAssignPlayerList(list, $event.target)">
+                  <td>
+                    <input class="s_list__checkBox" type="checkbox" name="room_seq" :value="list.lodging_seq" />
+                    <i class="m_list__checkBox" @click="clickCheckBox(list)"></i>
+                  </td>
+                  <td>{{ list.no }}</td>
+                  <td v-bind:class="{s_orange_txt: list.state == '101' || list.state == '103' || list.state == '', s_blue_txt: list.state == '102'}">
+                    <template v-if="list.state == 100">선수배정대기</template>
+                    <template v-else-if="list.state == 101">승인요청</template>
+                    <template v-else-if="list.state == 102">재배정요청</template>
+                    <template v-else-if="list.state == 103">재승인완료</template>
+                    <template v-else-if="list.state == 104">승인완료</template>
+                    <template v-else>호실배정대기</template>
+                  </td>
+                  <td>{{list.association_title}}</td>
+                  <td>{{list.sports}}</td>
+                  <td>{{list.gender}}</td>
+                  <td>{{list.trainingtype}}</td>
+                  <td>{{list.inoutdate}}</td>
+                  <td>{{list.players_count}}명</td>
+                  <td>
+                    <p>총 <span class="s_blue_txt">{{list.room_count}}</span>실</p>
+                    <button v-if="list.room_count == '0'" class="m_choice_btn s_orange" @click="loadAssignRoomList(list)">호실선택</button>
+                    <button v-else class="m_choice_btn s_white" @click="loadAssignRoomList(list)">호실변경</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="l_search_btns l_content_btns">
+          <button type="submit" class="s_blue" @click="updateApprovalAssign('Y')">승인</button>
+          <button type="submit" class="s_gray" @click="updateApprovalAssign('N')">재배정 요청</button>
+        </div>
+        <!-- 목록 테이블 형식. s. -->
+        <div class="l_list_box s_sub_list_box hide">
+          <div class="l_list_tablewrap bottom">
+            <table>
+              <caption>기구 정보 목록</caption>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>종목</th>
+                  <th>직위</th>
+                  <th>성명</th>
+                  <th>성별</th>
+                  <th>생년월일</th>
+                  <th>장애여부</th>
+                  <th>장애유형</th>
+                  <th>입촌시작</th>
+                  <th>입촌종료</th>
+                  <th>호실</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(list,key) in playerInfo" :key="key" v-bind:class="{s_orange_border: list.state == '301'}">
+                  <td>{{list.no}}</td>
+                  <td>{{list.sports}}</td>
+                  <td>{{list.position}}</td>
+                  <td>{{list.name}}</td>
+                  <td>{{list.gender}}</td>
+                  <td>{{list.birthday}}</td>
+                  <td>{{list.disabledstate}}</td>
+                  <td>{{list.disabledtype}}</td>
+                  <td>{{list.sdate}}</td>
+                  <td>{{list.edate}}</td>
+                  <td>{{list.number}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <!-- 컨텐츠 영역. e. -->
+      
+      <!-- 호실선택 팝업 -->
+      <transition name="fade">
+        <div id="l_popup__choice_room" class="m_popup m_share_room__popup m_share_choice_room__popup" v-if="showPopup">
+        <div class="m_popup__title">
+          <h1>호실선택</h1>
+          <div class="m_popup__panel">
+            <div class="m_panel__room">
+              <p>총 <span class="s_blue_txt">{{ number_of_room }}</span> 개실 선택( 2인실-<span class="s_blue_txt">{{ number_two_room }}개</span> 3인실-<span class="s_blue_txt">{{ number_three_room }}개</span>)</p>
+            </div>
+            <div class="m_panel__people">
+              <p>정원</p>
+              <span class="s_orange_txt">{{ click_player_count }}</span>/<span class="s_blue_txt">{{ players_count }}</span>
+              <p>인</p>
+            </div>
+          </div> 
+        </div>
+        
+        <div class="m_popup__room_wrap m_vertical">
+            <!-- *01호 -->
+            <div class="m_room__row">
+              <div class="m_room__title">
+                <p>1층</p>
+              </div>
+                <!-- 숙소 하나 -->
+                <template v-for="(room,key) in roomInfo1" :key="key" >
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__checkBox" type="checkbox" name="room" :value="room.seq" />
+                        <i class="m_room__checkBox" @click="clickAssignRoom(room, $event.target)"></i>
+                      </div>
+                      <p class="m_number">{{room.number}} 호</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(player,key) in room.player" :key="key">
+                        <div class="m_room__people">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ player.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            <!-- *01호 -->
+            <!-- *02호 -->
+            <div class="m_room__row">
+              <div class="m_room__title">
+                <p>2층</p>
+              </div>
+                <!-- 숙소 하나 -->
+                <template v-for="(room,key) in roomInfo2" :key="key" >
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__checkBox" type="checkbox" name="room" :value="room.seq" />
+                        <i class="m_room__checkBox" @click="clickAssignRoom(room, $event.target)"></i>
+                      </div>
+                      <p class="m_number">{{room.number}} 호</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(player,key) in room.player" :key="key">
+                        <div class="m_room__people">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ player.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            <!-- *02호 -->
+            <!-- *03호 -->
+            <div class="m_room__row">
+              <div class="m_room__title">
+                <p>3층</p>
+              </div>
+                <!-- 숙소 하나 -->
+                <template v-for="(room,key) in roomInfo3" :key="key" >
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__checkBox" type="checkbox" name="room" :value="room.seq" />
+                        <i class="m_room__checkBox" @click="clickAssignRoom(room, $event.target)"></i>
+                      </div>
+                      <p class="m_number">{{room.number}} 호</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(player,key) in room.player" :key="key">
+                        <div class="m_room__people">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ player.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            <!-- *03호 -->
+            <!-- *04호 -->
+            <div class="m_room__row">
+                <div class="m_room__title">
+                  <p>4층</p>
+                </div>
+                <!-- 숙소 하나 -->
+                <template v-for="(room,key) in roomInfo4" :key="key" >
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__checkBox" type="checkbox" name="room" :value="room.seq" />
+                        <i class="m_room__checkBox" @click="clickAssignRoom(room, $event.target)"></i>
+                      </div>
+                      <p class="m_number">{{room.number}} 호</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(player,key) in room.player" :key="key">
+                        <div class="m_room__people">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ player.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- *04호 -->
+          </div>
+            <div class="l_search_btns l_popup_btns">
+              <button class="s_blue" @click="updateAssignRoom()">확인</button>
+              <button class="s_white" @click="closePopup(l_popup__choice_room)">취소</button>
+            </div>
+        </div>
+      </transition>
+    </div>
+    <!-- e.관리자 페이지 숙소배정 -->
+  </section>
+
+  <section id="icContent_leader" class="l_ct l_share_room l_share_room_assignment" v-if="groupcode == 'ASSOCIATION'" v-cloak>
+    <!-- s.종목별 지도자 페이지 숙소배정 -->
+    <div class="l_content">
+        <!-- 컨텐츠 영역. s. -->
+        <h2>숙소배정</h2>
+
+        <div class="l_search_box">
+          <div class="l_search_field">
+            <div class="l_field">
+              <label for="sdate">기간선택</label>
+              <div class="l_field__date">
+                <input type="text" name="sdate" id="sdate" class="sdate" placeholder="날짜선택" value="" v-model="sdate">
+                <button class="l_btn_calendar" style="left:226px;"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
+              </div>
+              <p class="l_field__s_character">~</p>
+              <div class="l_field__date">
+                <input type="text" name="edate" class="edate" placeholder="날짜선택" value="" v-model="edate">
+                <button class="l_btn_calendar"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
+              </div>
+            </div>
+            <div class="l_search_btns">
+              <button type="submit" class="s_white" @click="loadSportsList()">조회</button>
+            </div>
+          </div>
+        </div>
+    
+        <!-- 목록 테이블 형식. s. -->
+        <div class="l_list_box">
+          <div class="l_list_tablewrap top">
+            <table>
+              <caption>종목별 지도자 숙소 배정 목록</caption>
+              <thead>
+                <tr>
+                  <th>
+                    <input class="s_list__checkBox_all" type="checkbox" name="list" value="" />
+                    <i class="m_list__checkBox_all" @click="clickCheckBoxAll()"></i>
+                  </th>
+                  <th>번호</th>
+                  <th>상태</th>
+                  <th>소속단체명</th>
+                  <th>종목</th>
+                  <th>성별</th>
+                  <th>훈련구분</th>
+                  <th>입촌기간</th>
+                  <th>인원수</th>
+                  <th>호실배정</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="l_list__table_tr" v-for="(list, key) in assignInfo" :key="key" @click="loadAssignSportsPlayerList(list)">
+                  <td>
+                    <input class="s_list__checkBox" type="checkbox" name="room_seq" :value="list.lodging_seq" />
+                    <i class="m_list__checkBox" @click="clickCheckBox(list)"></i>
+                  </td>
+                  <td>{{ list.no }}</td>
+                  <td v-bind:class="{s_blue_txt: list.state == '101' || list.state == '103', s_orange_txt: list.state == '100' || list.state == '102' || list.state == ''}">
+                    {{ list.state == '100' ? '선수배정요청' : list.state == '101' ? '승인요청' : list.state == '102' ? '재배정요청' : list.state == '103' ? '재승인요청' : list.state == '104' ? '승인' : '호실배정대기'}}
+                  </td>
+                  <td>{{ list.association_title }}</td>
+                  <td>{{ list.sports }}</td>
+                  <td>{{ list.gender }}</td>
+                  <td>{{ list.trainingtype }}</td>
+                  <td>{{ list.inoutdate }}</td>
+                  <td>{{ list.players_count }}</td>
+                  <td>
+                    <p>총<span class="s_blue_txt">{{ list.room_count }}</span>실</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="l_search_btns l_content_btns">
+          <button type="submit" class="s_blue" @click="updateAssignSports()">배정 승인 요청</button>
+          <button type="submit" class="s_white" @click="loadAssignSportsRoomList(true)">배정호실 보기</button>
+        </div>
+        <!-- 목록 테이블 형식. s. -->
+        <div class="l_list_box s_sub_list_box hide">
+          <div class="l_list_tablewrap bottom">
+            <table>
+              <caption>종목별 선수 목록</caption>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>종목</th>
+                  <th>직위</th>
+                  <th>성명</th>
+                  <th>성별</th>
+                  <th>생년월일</th>
+                  <th>장애여부</th>
+                  <th>장애유형</th>
+                  <th>입촌시작</th>
+                  <th>입촌종료</th>
+                  <th>호실</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(list,key) in playerInfo" :key="key">
+                  <td>{{list.no}}</td>
+                  <td>{{list.sports}}</td>
+                  <td>{{list.position}}</td>
+                  <td>{{list.name}}</td>
+                  <td>{{list.gender}}</td>
+                  <td>{{list.birthday}}</td>
+                  <td>{{list.disabledstate}}</td>
+                  <td>{{list.disabledtype}}</td>
+                  <td>{{list.sdate}}</td>
+                  <td>{{list.edate}}</td>
+                  <td>
+                    <p v-if="list.number == ''">미지정</p>
+                    <p v-else>{{list.number}}</p>
+                      <template v-if="stateChk">
+                        <button class="m_relocation_btn s_orange" v-if="list.state !== '300' && list.state !== '303'" @click="loadAssignSportsBedList(list.no)">배정</button>
+                        <button class="m_relocation_btn s_white" v-else @click="loadAssignSportsBedList(list.no)">재배정</button>
+                      </template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- 컨텐츠 영역. e. -->
+        
+        <!-- 배정 팝업 -->
+        <transition name="fade">
+          <div id="l_popup__bed_room" class="m_popup m_share_room__popup m_re_share_room__popup" v-if="showBedPopup">
+            <div class="m_popup__title">
+              <h1>{{ roomInfo.name }} 숙소배정</h1>
+              <div class="m_popup__panel">
+                <div class="m_panel">
+                  <span v-if="roomInfo.isAssign"><span>{{ roomInfo.number }}</span><p>호 배정됨</p></span>
+                  <span v-else><span>-</span><p>호 배정됨</p></span>
+                </div>
+              </div>
+            </div>
+            <div class="m_popup__room_wrap">
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo1.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo1" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__radioBtn s_popup__radioBtn" type="radio" name="popup_room" :value="room.seq" :data-number="room.number"/>
+                        <i class="m_field__radioBtn" @click="updateAssignSportsBed(room, $event.target)" :data-number="room.number"></i>
+                      </div>
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO" :data-number="room.number">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 2층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo2.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo2" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__radioBtn s_popup__radioBtn" type="radio" name="popup_room" :value="room.seq" :data-number="room.number"/>
+                        <i class="m_field__radioBtn" @click="updateAssignSportsBed(room, $event.target)" :data-number="room.number"></i>
+                      </div>
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO" :data-number="room.number">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 3층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo3.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo3" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__radioBtn s_popup__radioBtn" type="radio" name="popup_room" :value="room.seq" :data-number="room.number"/>
+                        <i class="m_field__radioBtn" @click="updateAssignSportsBed(room, $event.target)" :data-number="room.number"></i>
+                      </div>
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO" :data-number="room.number">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 4층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo4.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo4" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <div class="m_room__input">
+                        <input class="s_room__radioBtn s_popup__radioBtn" type="radio" name="popup_room" :value="room.seq" :data-number="room.number"/>
+                        <i class="m_field__radioBtn" @click="updateAssignSportsBed(room, $event.target)" :data-number="room.number"></i>
+                      </div>
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO" :data-number="room.number">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="l_search_btns l_popup_btns">
+              <!-- <button class="s_blue" @click="updateAssignSportsBedSave()">확인</button> -->
+              <button class="s_white" @click="closePopup(l_popup__bed_room)">닫기</button>
+            </div>
+          </div>
+        </transition>
+
+        <!-- 배정호실 보기 팝업 -->
+        
+        <transition name="fade">
+          <div id="l_popup__share_room" class="m_popup m_share_room__popup m_share_room_read__popup" v-if="showSharePopup">
+            <div class="m_popup__title">
+              <h1>배정호실 보기</h1>
+              <div class="m_popup__panel">
+                <div class="m_panel">
+                  <p>{{ association_title }}</p>
+                </div>
+                <div class="m_panel">
+                  <p>총원</p>
+                  <span class="s_blue_txt">{{ playerTot }}</span>
+                  <p>명</p>
+                </div>
+                <div class="m_panel">
+                  <p>호실</p>
+                  <span class="s_blue_txt">{{ room_count }}</span>
+                  <p>개 배정됨</p>
+                </div>
+              </div>
+            </div>
+            <div class="m_popup__room_wrap">
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo1.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo1" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+                  
+                </template>
+              </div>
+              <!-- 2층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo2.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo2" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 3층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo3.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo3" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <!-- 4층 -->
+              <!-- *01호 -->
+              <div class="m_room__row" v-if="assignRoomInfo4.length !== 0">
+                <template v-for="(room, key) in assignRoomInfo4" :key="key">
+                  <div class="m_room__wrap">
+                    <div class="m_room__number">
+                      <p class="m_number">{{ room.number }}</p>
+                    </div>
+                    <div class="m_room">
+                      <template v-for="(list, key) in room.fixed" :key="num">
+                        <div class="m_room__people" :data-bed-info="list.BED_INFO">
+                          <img src="/front/img/num_stayed_peopole.png" />
+                          <span class="m_name">{{ list.name }}</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            <div class="l_search_btns l_popup_btns">
+              <button class="s_blue" @click="closePopup(l_popup__share_room)">확인</button>
+            </div>
+          </div>
+        </transition>
+      </div>
+  <!-- e.종목별 지도자 페이지 숙소배정 -->
+  </section>
+</div>
+
+<script>
+var eventBus=new Vue();
+
+var headtitle=new Vue({
+  el:"#contentHeader",
+  data:{
+    menu:"",
+    submenu:"",
+  },
+  methods:{
+    // 상단 정보
+    menuLoc:function(){
+      var _this=this;
+      if(nav.nav_list[0]==undefined){
+        setTimeout(function(){
+          _this.menuLoc();
+        },10);
+        return;
+      }
+      this.menu=nav.nav_list[nav.depth1].title;
+      this.submenu=nav.nav_list[nav.depth1].submenu[nav.depth2-1].title;
+    }
+  },
+  mounted:function(){},
+  created:function(){
+    eventBus.$on("menuinfo", this.menuLoc);// 다른 vue 컴포넌트에서 "menuinfo"으로 보내면 menuLoc 함수 실행
+  }
+});
+var nav=new Vue({
+  el:"#nav",
+  data:{
+    api_logout:"http://ic.sportsdiary.co.kr/api/loginout/logout.asp",
+    nav_url:"http://ic.sportsdiary.co.kr/api/menu_control/menu.asp",
+
+    groupCode:"",
+    nav_list:[],
+    check_depth1:0,// 메뉴에서 선택한거. 0 기본
+    depth1:null,// 현재 화면 메뉴
+    depth2:null,// 현재 화면 서브메뉴
+  },
+  watch:{},
+  methods:{
+    // axios 불러오기
+    // 로그인 세션 확인
+    sessionCheck:function(){
+      this.groupCode=sessionStorage.getItem("groupcode");
+
+      // 세션 키가 없을 때
+      if (!this.groupCode && this.groupCode==null){
+          alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
+          location.href="/index.asp";
+          return false;
+      } else { // 있을 때
+          return true;
+      }
+    },
+    // logout
+    logout:function(){
+      var _this=this
+      axios.get(_this.api_logout).then(function(response){
+        if(response.data.state=="true"){
+          localStorage.clear();
+          sessionStorage.clear();
+          location.href="/index.asp";
+        }
+      }).catch(function(error){
+        console.log("logout error : ");
+        console.log(error);
+      }).finally(function(){
+        console.log("logout ok");
+      });
+    },
+
+    // menu
+    loadNav:function(url){
+      var _this=this;
+      axios.post(url,{
+        groupcode:this.groupCode
+      }).then(function(response){
+        if(response.data.state=="true"){
+          _this.nav_list=response.data.menu;
+        }
+      }).catch(function(error){
+        console.log("loadNav error : ");
+        console.log(error);
+      });
+    },
+    // 메뉴 선택시 서브메뉴 보이기
+    menuChoice:function(no,target){
+      this.check_depth1=no;
+
+      if(target.nextElementSibling.getAttribute("style")==null){
+        target.nextElementSibling.setAttribute("style", "height:"+target.nextElementSibling.childNodes[0].clientHeight+"px");
+      }
+    },
+    // 탭이동으로 메뉴에 접근하면 해당 서브메뉴 보이기
+    menuFocus:function(key,etarget){
+      this.menuChoice(key,etarget)
+    },
+    // 컨텐츠화면에서 보낸 메뉴 위치 받아서 설정하기
+    menuDrop:function(deptharr){
+      this.depth1=deptharr[0];
+      this.depth2=deptharr[1];
+      this.check_depth1=deptharr[0];
+    }
+  },
+  mounted:function(){
+    // 다른 메뉴 선택 시 부드럽게 움직이도록 현재 메뉴에 높이값 주기.
+    setTimeout(function(){
+      if(document.querySelector(".l_submenu.s_on")!=null){
+        var cur_menu=document.querySelector(".l_submenu.s_on");
+        cur_menu.setAttribute("style", "height:"+cur_menu.childNodes[0].clientHeight+"px");
+      }
+    },300);
+
+
+    // 임시로 css에 캐시 안생기게////////////////////////////////////////
+    document.head.querySelectorAll("link").forEach(function(ele,idx){////
+      if(ele.getAttribute("href")==="/front/css/ic.css"){////////////////////
+        ele.setAttribute("href", "/front/css/ic.css?"+Date.now());///////////
+        return;//////////////////////////////////////////////////////////
+      }//////////////////////////////////////////////////////////////////
+    });//////////////////////////////////////////////////////////////////
+  },
+  created:function(){
+    var isLogin=this.sessionCheck();
+    if(isLogin){
+      this.loadNav(this.nav_url);
+      eventBus.$on("menudrop", this.menuDrop);// 다른 vue 컴포넌트에서 "menudrop"으로 보내면 menuDrop 함수 실행
+    }
+  }
+});
+var cont_admin = new Vue({
+  el:"#icContent_admin",
+  data:{
+    // api
+    api_selected_item:"http://ic.sportsdiary.co.kr/api/menu_control/selected_item_custom.asp",
+    api_assign_list:"http://ic.sportsdiary.co.kr/api/assign_manager/assign_list.asp",
+    api_assign_player_list:"http://ic.sportsdiary.co.kr/api/assign_manager/assign_player_list.asp",
+    api_assign_room_list:'http://ic.sportsdiary.co.kr/api/assign_manager/assign_room_list.asp',
+    api_assign_room_update: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_room_update.asp',
+    api_assign_approval_update: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_approval_update.asp',
+    api_assign_player_update: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_player_update.asp',
+    // 세션 정보
+    groupcode: '',
+    //셀렉트박스
+    sdate: '', // 시작일
+    edate: '', // 종료일
+    sports_seq: '', // 종목 selected item
+    selectInfo: {
+      sports: [], // 종목 셀렉트박스 array
+    },
+    // 숙소배정단체, 숙소배정선수
+    assingTot: '', // 숙소배정단체 total
+    assignInfo: [], // 숙소배정단체 리스트
+    playerTot: '', // 숙소배정선수 total
+    playerInfo: [], // 숙소배정선수 리스트
+    // 숙소배정 팝업
+    p_playerInfo: [], // 해당 단체의 선수 정보
+    assignPlayerInfo: [], // 단체 선수들의 숙소배정정보
+
+    seq: '', // 룸 seq
+    lodging_seq: '', // 숙소 seq
+    center_seq: '', // 센터 seq
+    players_count: '', // 단체 명수
+    click_player_count: 0, // 선택한 단체 명수
+    number_of_room: 0, // 방의 개수
+    number_two_room: 0, // 선택한 2인실 수
+    number_three_room: 0, // 선택한 3인실 수
+
+    roomTot: '', // 숙소 total
+    roomInfo1: [], // 1층
+    roomInfo2: [], // 2층
+    roomInfo3: [], // 3층
+    roomInfo4: [], // 4층
+    
+    facility_seq: [], // 선택한 단체의 방배정 저장
+    checkBoxArr:[], // 체크박스 array
+    // flag
+    showPopup: false,
+    isFull: false,
+  },
+  methods:{
+    // 세션에서 사용자 정보 가져오기
+    getSessionInfo:function() {
+      this.groupcode = sessionStorage.getItem('groupcode');
+    },
+
+    // 날짜 설정
+    setDate:function() {
+      var date=new Date();
+
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+
+      if (String(month).split('').length < 2) month = '0' + month;
+      if (String(day).split('').length < 2) day = '0' + day;
+
+      this.sdate = year + '-' + month + '-' + day;
+      this.edate = year + '-' + month + '-' + day;
+    },
+
+    // 달력 불러오기
+    loadCalendar:function() {
+      var sCalendar = document.querySelector(".sdate");
+      flatpickr(sCalendar,{
+        locale:"ko",
+      });
+
+      var eCalendar = document.querySelector(".edate");
+      flatpickr(eCalendar,{
+        locale:"ko",
+      });
+    },
+
+    // 숙소배정 셀렉트 박스 : 종목 불러오기
+    loadSelectBoxSports:function(){
+      var _this=this
+      _this.selectInfo.sports = selected_item.SP;
+    },
+
+    // 숙소 요청 및 승인완료 리스트 가져오기
+    loadRoomApply:function() {
+      var _this=this;
+
+      axios.post(_this.api_assign_list,{
+        sdate: _this.sdate,
+        edate: _this.edate,
+        sports_seq: _this.sports_seq
+      }).then(function(response){
+        if(response.data.state=="true"){
+          _this.assignTot = response.data.total;
+          _this.assignInfo = response.data.assign;
+          _this.loadCalendar();
+        }
+      }).catch(function(error){
+        console.log("숙소배정단체 list error : ");
+        console.log(error);
+      }).finally(function(){
+        console.log("숙소배정단체 list success");
+      });
+    },
+
+    // 숙소배정 선수 리스트 가져오기
+    loadAssignPlayerList:function(list, target) {
+      var _this = this;
+
+      var playerTable = $('.s_sub_list_box');
+      var radioBox = '';
+      var tmpRoomInfo = [];
+
+      if (list.players_count == '0' || list.players_count == '') {
+        alert('해당 단체에 선수가 없습니다.');
+        return false;
+      }
+
+      // 선수 목록 불러오기
+      var assignPlayerInfo = axios.post(_this.api_assign_player_list,{
+        seq: list.seq,
+      });
+
+      // 방 정보 불러오기
+      var assignRoomInfo = axios.post(_this.api_assign_room_list,{
+        seq: list.seq,
+        lodging_seq: list.lodging_seq
+      });
+
+      // 한 번에 불러오기
+      axios.all([
+        assignPlayerInfo,
+        assignRoomInfo
+      ]).then(axios.spread(function(responseplayer, responseroom){
+        if(responseplayer.data.state=="true"){
+          _this.playerTot = responseplayer.data.total;
+          _this.playerInfo = responseplayer.data.assign_player;
+
+          _this.seq = list.seq;
+          _this.lodging_seq = list.lodging_seq;
+
+          playerTable.removeClass('hide');
+        }
+
+        if(responseroom.data.state=="true"){
+          tmpRoomInfo = responseroom.data.room1;
+          _this.center_seq = tmpRoomInfo[0].center_seq;
+        }
+      })).catch(function(errorplayer, errorroom){
+        console.log("errorplayer : ");
+        console.log(errorplayer);
+        console.log("");
+        console.log("errorroom : ");
+        console.log(errorroom);
+      }).finally(function() {
+        _this.highlight(list.no - 1);
+      });
+    },
+
+    // 숙소 배정 방 가져오기
+    loadAssignRoomList:function(list) {
+      var _this=this;
+
+      // 선수가 없을 경우
+      if (list.players_count == '0') {
+        return false;
+      }
+
+      // 선수 목록 불러오기
+      var assignPlayerInfo = axios.post(_this.api_assign_player_list,{
+        seq: list.seq,
+      });
+
+      // 방 정보 불러오기
+      var assignRoomInfo = axios.post(_this.api_assign_room_list,{
+        seq: list.seq,
+        lodging_seq: list.lodging_seq
+      });
+
+      // 한 번에 불러오기
+      axios.all([
+        assignPlayerInfo,
+        assignRoomInfo
+      ]).then(axios.spread(function(responseplayer, responseroom){
+      // ]).then(axios.spread((...response)=>{
+        if(responseplayer.data.state=="true"){
+          _this.p_playerInfo = responseplayer.data.assign_player;
+        }
+
+        if(responseroom.data.state=="true"){
+          _this.roomInfo1 = responseroom.data.room1;
+          _this.roomInfo2 = responseroom.data.room2;
+          _this.roomInfo3 = responseroom.data.room3;
+          _this.roomInfo4 = responseroom.data.room4;
+        }
+      })).catch(function(errorplayer, errorroom){
+        console.log("errorplayer : ");
+        console.log(errorplayer);
+        console.log("");
+        console.log("errorroom : ");
+        console.log(errorroom);
+      }).finally(function() {
+        _this.openPopup('#l_popup__choice_room');
+        _this.getAssignRoomPlayer();
+        _this.setRoomInfo(list.no);
+        // _this.lodging_seq = list.lodging_seq;
+        // _this.center_seq = _this.roomInfo1[0].center_seq; // 센터가 여러개일 경우 수정. 임시
+      });
+    },
+
+    // 이미 숙소에 배정되어 있는 사람들 불러오기
+    getAssignRoomPlayer:function() {
+      var _this = this;
+      var number = '', bed_info = '', name = '';
+      var room_number = '', isEmpty = true;
+      var roomInfoName = '';
+      
+      _this.assignPlayerInfo = [];
+
+      // 해당 단체의 선수들 배정정보 가져오기
+      this.p_playerInfo.forEach(function(player, idx) {
+        number = player.number;
+        bed_info = player.bed_info;
+        name = player.name;
+
+        if (number !== '' && bed_info !== '') {
+          _this.assignPlayerInfo.push({ number: number, bed_info: bed_info, name: name });
+        }
+      });
+
+      // 1층
+      this.roomInfo1.forEach(function(room, idx) {
+        room_number = room.number;
+        room_fixed = room.fixed;
+        room.player = [];
+
+        if (room.room_seq !== '' && room.room_seq !== undefined) {
+          $('.s_room__checkBox[value='+ room.seq+']').prop('checked', true);
+            _this.facility_seq.push({ seq: room.seq, room_seq: room.room_seq });
+        }
+
+        for(var i = 0; i < room.fixed; i++){
+          _this.assignPlayerInfo.forEach(function(player, no) {
+            if (player.number == room_number && i + 1 == Number(player.bed_info)) {
+              room.player.push(player);
+              isEmpty = false;
+            }
+          });
+
+          if (isEmpty) {
+            room.player.push({ number: room_number, bed_info: String(i + 1), name: '-'})
+          }
+
+          isEmpty = true;
+        }
+      });
+
+      // 2층
+      this.roomInfo2.forEach(function(room, idx) {
+        room_number = room.number;
+        room_fixed = room.fixed;
+        room.player = [];
+
+        if (room.room_seq !== '' && room.room_seq !== undefined) {
+          $('.s_room__checkBox[value='+ room.seq+']').prop('checked', true);
+            _this.facility_seq.push({ seq: room.seq, room_seq: room.room_seq });
+        }
+
+        for(var i = 0; i < room.fixed; i++){
+          _this.assignPlayerInfo.forEach(function(player, no) {
+            if (player.number == room_number && i + 1 == Number(player.bed_info)) {
+              room.player.push(player);
+              isEmpty = false;
+            }
+          });
+
+          if (isEmpty) {
+            room.player.push({ number: room_number, bed_info: String(i + 1), name: '-'})
+          }
+
+          isEmpty = true;
+        }
+      });
+
+      // 3층
+      this.roomInfo3.forEach(function(room, idx) {
+        room_number = room.number;
+        room_fixed = room.fixed;
+        room.player = [];
+
+        if (room.room_seq !== '' && room.room_seq !== undefined) {
+          $('.s_room__checkBox[value='+ room.seq+']').prop('checked', true);
+            _this.facility_seq.push({ seq: room.seq, room_seq: room.room_seq });
+        }
+
+        for(var i = 0; i < room.fixed; i++){
+          _this.assignPlayerInfo.forEach(function(player, no) {
+            if (player.number == room_number && i + 1 == Number(player.bed_info)) {
+              room.player.push(player);
+              isEmpty = false;
+            }
+          });
+
+          if (isEmpty) {
+            room.player.push({ number: room_number, bed_info: String(i + 1), name: '-'})
+          }
+
+          isEmpty = true;
+        }
+      });
+
+      // 4층
+      this.roomInfo4.forEach(function(room, idx) {
+        room_number = room.number;
+        room_fixed = room.fixed;
+        room.player = [];
+
+        if (room.room_seq !== '' && room.room_seq !== undefined) {
+          $('.s_room__checkBox[value='+ room.seq+']').prop('checked', true);
+            _this.facility_seq.push({ seq: room.seq, room_seq: room.room_seq });
+        }
+
+        for(var i = 0; i < room.fixed; i++){
+          _this.assignPlayerInfo.forEach(function(player, no) {
+            if (player.number == room_number && i + 1 == Number(player.bed_info)) {
+              room.player.push(player);
+              isEmpty = false;
+            }
+          });
+
+          if (isEmpty) {
+            room.player.push({ number: room_number, bed_info: String(i + 1), name: '-'})
+          }
+
+          isEmpty = true;
+        }
+      });
+    },
+
+    // 재배정 혹은 호실선택 버튼 클릭 시, 데이터 set
+    setRoomInfo:function(key) {
+      var organ = this.assignInfo[key - 1];
+
+      this.seq = organ.seq;
+      this.lodging_seq = organ.lodging_seq;
+      this.center_seq = organ.center_seq;
+      this.players_count = organ.players_count;
+      
+      this.openPopup('#l_popup__choice_room');
+    },
+
+    // 호실 선택 시
+    clickAssignRoom:function(room, target) {
+      var _this = this;
+      var radioBox = $(target).siblings('.s_room__checkBox');
+
+      if (!radioBox.prop('checked')) {
+        if (this.click_player_count > this.players_count) {
+          alert('단체 선수의 정원보다 초과하여 방을 선택할 수 없습니다.');
+          return false;
+        }
+
+        radioBox.prop('checked', true);
+        this.setFacilitySeq(room, true);
+        this.calcRoomFixed(room.fixed, true);
+      } else {
+        radioBox.prop('checked', false);
+        this.setFacilitySeq(room, false);
+        this.calcRoomFixed(room.fixed, false);
+      }
+    },
+
+    // 방 선택에 따른 인원수와 방 개수 계산
+    calcRoomFixed:function(fixed, checked) {
+      if (checked) {
+        this.click_player_count += Number(fixed);
+        this.number_of_room += 1;
+
+        if (fixed == '2') {
+          this.number_two_room += 1;
+        } else {
+          this.number_three_room += 1;
+        }
+      } else {
+        this.click_player_count -= Number(fixed);
+        this.number_of_room -= 1;
+        
+        if (fixed == '2') {
+          this.number_two_room -= 1;
+        } else {
+          this.number_three_room -= 1;
+        }
+      }
+    },
+
+    // 숙소 배정 업데이트를 위한 배열 정렬 및 삽입
+    setFacilitySeq:function(room, flag) {
+      var facilityArr = [];
+      var seq = room.seq;
+      var room_seq = room.room_seq;
+      var index = 1;
+
+      if (flag == true) {
+        this.facility_seq.push({ seq: seq, room_seq: room_seq });
+      } else {
+        if (this.facility_seq.length == 1) {
+          this.facility_seq = [];
+        } else {
+          this.facility_seq.forEach(function(facility, idx){
+            if (facility.seq !== seq) {
+              facilityArr.push({ seq: facility.seq, room_seq: facility.room_seq });
+            }
+          });
+
+          this.facility_seq = facilityArr;
+        }
+      }
+    },
+
+    // 숙소 배정 룸 저장
+    updateAssignRoom:function() {
+      var _this=this;
+
+      axios.post(_this.api_assign_room_update,{
+        lodging_seq: _this.lodging_seq,
+        center_seq: _this.center_seq,
+        facility_seq: _this.facility_seq,
+      }).then(function(response){
+        if(response.data.state=="true"){
+          console.log('숙소배정 room 등록/수정 완료');
+          _this.closePopup('#l_popup__choice_room');
+        }
+      }).catch(function(error){
+        console.log("숙소배정 room 등록/수정 error : ");
+        console.log(error);
+      }).finally(function(){
+        _this.loadRoomApply();
+      });
+    },
+
+    // 숙소배정 승인 요청
+    updateApprovalAssign:function(flag) {
+      var _this=this;
+      var isError = false;
+      var alert_cmt = '';
+
+      if (_this.checkBoxArr.length == 0) {
+        alert('선택한 숙소가 없습니다.');
+        return false;
+      } else {
+        _this.checkBoxArr.forEach(function(item, idx) {
+          axios.post(_this.api_assign_approval_update,{
+            lodging_seq: item.lodging_seq,
+            center_seq: item.center_seq,
+            approval: flag,
+          }).then(function(response){
+            if(response.data.state=="true"){
+              if (flag == 'Y') {
+                alert_cmt = '숙소 배정이 승인되었습니다.';
+              } else {
+                alert_cmt = '숙소 재배정 요청 하였습니다.';
+              }
+              isError = true;
+            } else {
+              if (!isError) {
+                if (response.data.errorcode == 'ERR-200') {
+                  alert_cmt = '(재)승인요청된 건에 대해서만 승인/재배정 요청 하실 수 있습니다.';
+                }
+
+                if (response.data.errorcode == 'ERR-210') {
+                  alert_cmt = '배정된 숙소가 없습니다.';
+                }
+              }
+            }
+          }).catch(function(error){
+            console.log("숙소배정 room 등록/수정 error : ");
+            console.log(error);
+          }).finally(function() {
+            if (idx == _this.checkBoxArr.length - 1) {
+              alert(alert_cmt);
+              _this.loadRoomApply();
+            }
+          });
+        });
+      }
+    },
+
+    // 체크박스 이벤트
+    clickCheckBoxAll:function() {
+      var _this = this;
+      var checkBoxAll = $('.s_list__checkBox_all');
+      var checkBoxInput = $('.s_list__checkBox');
+      var isChecked = checkBoxAll.prop('checked');
+      var center_seq = '';
+
+      this.checkBoxArr = [];
+
+      if (isChecked) {
+        checkBoxAll.prop('checked', false);
+        checkBoxInput.prop('checked', false);
+      } else {
+        checkBoxAll.prop('checked', true);
+        checkBoxInput.prop('checked', true);
+
+        this.assignInfo.forEach(function(item, idx) {
+          _this.checkBoxArr.push({ 'seq': item.seq, 'lodging_seq' : item.lodging_seq });
+        });
+
+        this.checkBoxArr.forEach(function(item, idx) {
+          axios.post(_this.api_assign_room_list,{
+            seq: item.seq,
+            lodging_seq: item.lodging_seq
+          }).then(function(response){
+            if(response.data.state=="true"){
+              console.log('숙소배정 room 센터 번호');
+              center_seq = response.data.room1[0].center_seq; // 센터가 여러개일 경우 수정. 임시
+            }
+          }).catch(function(error){
+            console.log("숙소배정 room 센터 번호 error : ");
+            console.log(error);
+          }).finally(function() {
+            _this.checkBoxArr[idx] = { 'seq': item.seq, 'lodging_seq' : item.lodging_seq, 'center_seq': center_seq};
+          });
+        });
+      }
+    },
+
+    // 개별 체크박스 체크할 경우
+    clickCheckBox:function(list) {
+      var _this = this;
+      var checkBox = $('.m_list__checkBox');
+      var checkBoxInput = '';
+      var key = list.no - 1;
+      
+      if (list.players_count == '0' || list.players_count == '') {
+        return false;
+      }
+
+      checkBox.each(function(idx) {
+        if (idx == key) {
+          checkBoxInput = $('.s_list__checkBox').eq(key);
+
+          if (checkBoxInput.prop('checked')) {
+            checkBoxInput.prop('checked', false);
+            _this.sortCheckBoxArr(false, list);
+          } else {
+            checkBoxInput.prop('checked', true);
+            _this.sortCheckBoxArr(true, list);
+          }
+        }
+      });
+    },
+
+    // 체크박스 리스트 정렬
+    sortCheckBoxArr:function(flag, list) {
+      var _this = this;
+      var seq = '';
+      var lodging_seq = '';
+      var center_seq = '';
+
+      if (flag) { // 체크했을 때
+        axios.post(_this.api_assign_room_list,{
+          seq: list.seq,
+          lodging_seq: list.lodging_seq
+        }).then(function(response){
+          if(response.data.state=="true"){
+            console.log('숙소배정 room 센터 번호');
+            center_seq = response.data.room1[0].center_seq; // 센터가 여러개일 경우 수정. 임시
+            _this.checkBoxArr.push({ 'lodging_seq' : list.lodging_seq, 'center_seq' : center_seq });
+          }
+        }).catch(function(error){
+          console.log("숙소배정 room 센터 번호 error : ");
+          console.log(error);
+        });
+      } else { // 체크 해제했을 때
+        seq = list.lodging_seq;
+
+        this.checkBoxArr.forEach(function(arr, idx) {
+          lodging_seq = arr.lodging_seq;
+
+          if (lodging_seq == seq) {
+            _this.checkBoxArr.splice(idx, 1);
+          }
+        });
+      }
+    },
+    
+    // 팝업 열기
+    openPopup:function(popup) {
+      this.showPopup = true;
+      $('#l_popup__dimm').addClass('active');
+    },
+
+    // 팝업 닫기
+    closePopup:function(popup) {
+      this.showPopup = false;
+      $('#l_popup__dimm').removeClass('active');
+
+      $('.s_room__checkBox').prop('checked', false);
+      this.facility_seq = [];
+
+    },
+
+    // 테이블 선택 시 hightlight
+    highlight:function(no) {
+      $('.l_list__table_tr').removeClass('highlight');
+      $('.l_list__table_tr').eq(no).addClass('highlight');
+    },
+  },
+  mounted:function(){
+    this.getSessionInfo();
+  },
+  created:function(){
+    eventBus.$emit("menuinfo");
+    eventBus.$emit("menudrop", [9,2]);
+
+    this.setDate();
+    this.loadSelectBoxSports();
+    this.loadRoomApply();
+  }
+});
+
+var cont_leader = new Vue({
+  el:"#icContent_leader",
+  data:{
+    // api
+    api_assign_sports_list: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_sports_list.asp',
+    api_assign_sports_player_list: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_sports_player_list.asp',
+    api_assign_sports_room_list: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_sports_room_list.asp',
+    api_assign_sports_bed_update: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_sports_bed_update.asp',
+    api_assign_sports_update: 'http://ic.sportsdiary.co.kr/api/assign_manager/assign_sports_update.asp',
+    // 사용자 세션 정보
+    groupcode: '',
+
+    floor: '2', // 층
+    sdate: '', // 시작일
+    edate: '', // 종료일
+    sports: '', // 종목
+
+    assignTot: '', // 배정된 숙소 total
+    assignInfo: [], // 배정된 숙소 리스트
+    stateArr: [], // 상태값 array
+    stateChk: true, // 상태값 확인
+    playerTot: '', // 선수 total
+    playerInfo: [], // 선수 리스트
+    // 팝업
+    assignRoomTot: '', // 방배정 리스트
+    assignRoomInfo1: [], // 1층
+    assignRoomInfo2: [], // 2층
+    assignRoomInfo3: [], // 3층
+    assignRoomInfo4: [], // 4층
+    association_title: '', // 단체명
+    room_count: '', // 배정된 호실 개수
+    
+    // 종목별 bed update 위한 info
+    roomInfo: {
+      name: '', // 이름
+      number: '', // 호실
+      bed_info: '', // 침대정보
+      birthday: '', // 생일
+      player_seq: '', // 선수 seq
+      lodging_seq: '', // 
+      room_seq: '', // 호실 seq
+      center_seq: '', // 단체 seq
+      isAssign: false,
+      isChoice: 'N',
+    },
+    // 승인요청을 위한 info
+    seq: '',
+    lodging_seq: '',
+    assignList: '',
+    // 체크박스 array
+    checkBoxArr: [],
+    // flag
+    showBedPopup: false,
+    showSharePopup: false,
+  },
+  watch:{},
+  methods:{
+    // 세션 스토리지에서 사용자 정보 가져오기
+    getSessionInfo:function() {
+      this.groupcode = sessionStorage.getItem('groupcode');
+    },
+
+    // 날짜 설정
+    setDate:function() {
+      var date=new Date();
+
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+
+      if (String(month).split('').length < 2) month = '0' + month;
+      if (String(day).split('').length < 2) day = '0' + day;
+
+      // this.sdate = year + '-' + month + '-' + day;
+      // this.edate = year + '-' + month + '-' + day;
+      this.sdate = '2019-12-02';
+      this.edate = '2020-01-15';
+    },
+
+    // 달력 
+    loadCalendar:function() {
+      var sCalendar = document.querySelector(".sdate");
+      flatpickr(sCalendar,{
+        locale:"ko",
+      });
+
+      var eCalendar = document.querySelector(".edate");
+      flatpickr(eCalendar,{
+        locale:"ko",
+      });
+    },
+
+    // 숙소 요청 및 승인완료 리스트 가져오기
+    loadSportsList:function() {
+      var _this=this;
+      var stateArr = [];
+
+      axios.post(_this.api_assign_sports_list,{
+        sdate: _this.sdate,
+        edate: _this.edate
+      }).then(function(response){
+        if(response.data.state=="true"){
+          _this.assignTot = response.data.total;
+          _this.assignInfo = response.data.assign;
+          
+          _this.assignInfo.forEach(function(item){
+            var state = item.state;
+
+            if (state == '101' || state == '103') {
+              stateArr.push(item.no);
+            }
+          });
+
+          _this.stateArr = stateArr;
+        }
+      }).catch(function(error){
+        console.log("종목별 단체 list error : ");
+        console.log(error);
+      }).finally(function() {
+        _this.loadCalendar();
+      });
+    },
+
+    // 종목별 선수 list 가져오기
+    loadAssignSportsPlayerList:function(list) {
+      var playerTable = $('.s_sub_list_box');
+      var _this=this;
+
+      console.log(list);
+      // var radioBox = '';
+      
+      // if ($(target).hasClass('m_field__radioBtn')){
+      //   radioBox = $(target).siblings('.s_room__radioBtn');
+      // } else {
+      //   radioBox = $(target).find('.s_room__radioBtn');
+      // }
+
+      _this.stateChk = true;
+      _this.assignList = list;
+
+      // 상태값 정보 저장
+      _this.stateArr.forEach(function(state) {
+        if (state == list.no) {
+          _this.stateChk = false;
+        }
+      });
+      
+      axios.post(_this.api_assign_sports_player_list,{
+        seq: list.seq
+      }).then(function(response){
+        if(response.data.state=="true"){
+          _this.playerTot = response.data.total;
+          _this.playerInfo = response.data.assign_player;
+
+          _this.seq = list.seq;
+          _this.lodging_seq = list.lodging_seq;
+          _this.association_title = list.association_title;
+          _this.room_count = list.room_count;
+
+          playerTable.removeClass('hide');
+        }
+      }).catch(function(error){
+        console.log("종목별 선수 list error : ");
+        console.log(error);
+      }).finally(function(){
+        _this.loadAssignSportsRoomList(false);
+        _this.highlight(list.no - 1);
+      });
+    },
+
+    // 배정호실 보기
+    loadAssignSportsRoomList:function(isClickBtn) {
+      var _this=this;
+      var data = '';
+
+      _this.assignRoomInfo1 = [];
+      _this.assignRoomInfo2 = [];
+      _this.assignRoomInfo3 = [];
+      _this.assignRoomInfo4 = [];
+
+      axios.post(_this.api_assign_sports_room_list,{
+        seq: _this.seq,
+        lodging_seq: _this.lodging_seq
+      }).then(function(response){
+        if(response.data.state=="true"){
+          data = response.data;
+
+          _this.assignRoomTot = data.total;
+          
+          if (data.room1.length !== 0) {
+            _this.assignRoomInfo1 = data.room1;
+            _this.roomInfo.center_seq = _this.assignRoomInfo1[0].center_seq;
+          }
+          if (data.room2.length !== 0) {
+            _this.assignRoomInfo2 = data.room2;
+            _this.roomInfo.center_seq = _this.assignRoomInfo2[0].center_seq;
+          }
+          if (data.room3.length !== 0) {
+            _this.assignRoomInfo3 = data.room3;
+            _this.roomInfo.center_seq = _this.assignRoomInfo3[0].center_seq;
+          }
+          if (data.room4.length !== 0) {
+            _this.assignRoomInfo4 = data.room4;
+            _this.roomInfo.center_seq = _this.assignRoomInfo4[0].center_seq;
+          }
+
+          if (isClickBtn) {
+            _this.showSharePopup = true;
+            _this.openPopup();
+          }
+        } else {
+          if (response.data.errorcode == 'ERR-110') {
+            alert('단체 선택 후, 배정호실 보기를 클릭해 주세요.');
+          }
+        }
+      }).catch(function(error){
+        console.log("종목별 선수 룸 list error : ");
+        console.log(error);
+      });
+    },
+
+    // 선수 개별 방 가져오기
+    loadAssignSportsBedList:function(key) {
+      var _this=this;
+      var data = '';
+      var fullRoom = [];
+
+      axios.post(_this.api_assign_sports_room_list,{
+        seq: _this.seq,
+        lodging_seq: _this.lodging_seq
+      }).then(function(response){
+        if(response.data.state=="true"){
+          data = response.data;
+          _this.assignRoomTot = data.total;
+
+          if (data.room1.length !== 0) {
+            _this.assignRoomInfo1 = data.room1;
+            _this.assignRoomInfo1.forEach(function(item){
+              var fixed = item.fixed;
+              var isEmpty = false;
+
+              fixed.forEach(function(fix){
+                if (fix.name == '-') {
+                  isEmpty = true;
+                }
+              });
+
+              if (!isEmpty) {
+                fullRoom.push(item.number);
+              }
+            });
+          }
+          
+          if (data.room2.length !== 0) {
+            _this.assignRoomInfo2 = data.room2;
+            _this.assignRoomInfo2.forEach(function(item){
+              var fixed = item.fixed;
+              var isEmpty = false;
+
+              fixed.forEach(function(fix){
+                if (fix.name == '-') {
+                  isEmpty = true;
+                }
+              });
+
+              if (!isEmpty) {
+                fullRoom.push(item.number);
+              }
+            });
+          }
+          
+          if (data.room3.length !== 0) {
+            _this.assignRoomInfo3 = data.room3;
+            _this.assignRoomInfo3.forEach(function(item){
+              var fixed = item.fixed;
+              var isEmpty = false;
+
+              fixed.forEach(function(fix){
+                if (fix.name == '-') {
+                  isEmpty = true;
+                }
+              });
+
+              if (!isEmpty) {
+                fullRoom.push(item.number);
+              }
+            });
+          } 
+          
+          if (data.room4.length !== 0) {
+            _this.assignRoomInfo4 = data.room4;
+            _this.assignRoomInfo4.forEach(function(item){
+              var fixed = item.fixed;
+              var isEmpty = false;
+
+              fixed.forEach(function(fix){
+                if (fix.name == '-') {
+                  isEmpty = true;
+                }
+              });
+
+              if (!isEmpty) {
+                fullRoom.push(item.number);
+              }
+            });
+          }
+          if (key !== undefined && key !== ''){
+            _this.setplayerInfo(key);
+            _this.showBedPopup = true;
+            _this.openPopup();
+          }
+        }
+      }).catch(function(error){
+        console.log("종목별 선수 룸 list error : ");
+        console.log(error);
+      }).finally(function(){
+        if(key !== undefined && key !== '') _this.setRoomAssign();
+        _this.disableRadioBtn(fullRoom);
+      });
+    },
+    
+    // 선수 정보 설정
+    setplayerInfo:function(key) {
+      var player = this.playerInfo[key - 1];
+
+      this.roomInfo.name = player.name;
+      this.roomInfo.number = player.number;
+      this.roomInfo.birthday = player.birthday;
+      this.roomInfo.player_seq = player.player_seq;
+
+      if (this.roomInfo.number !== '') {
+        this.roomInfo.isAssign = true;
+      } else {
+        this.roomInfo.isAssign = false;
+      }
+    },
+
+    // 방을 클릭했을 때
+    clickAssignRoom: function(room, radioBox){
+      var _this = this;
+
+      this.roomInfo.room_seq = room.room_seq;
+      this.roomInfo.center_seq = room.center_seq;
+      this.roomInfo.lodging_seq = room.lodging_seq;
+
+      if (!radioBox.prop('checked')) {
+        this.roomInfo.number = room.number;
+        room.fixed.forEach(function(fixed){
+          if (fixed.name == _this.roomInfo.name) {
+            _this.roomInfo.bed_info = fixed.BED_INFO;
+          }
+        });
+        this.roomInfo.isChoice = 'Y';
+        this.roomInfo.isAssign = true;
+        radioBox.prop('checked', true);
+      } else {
+        this.roomInfo.number = '';
+        this.roomInfo.bed_info = '';
+        this.roomInfo.isChoice = 'N';
+        this.roomInfo.isAssign = false;
+        radioBox.prop('checked', false);
+      }
+    },
+
+    // 방에 있는 선수 정보 설정
+    setRoomAssign:function() {
+      if (this.roomInfo.number == '' || this.roomInfo.bed_info == ''){
+        var allInput = $('.s_popup__radioBtn');
+        allInput.prop('checked', false);
+      } else {
+        var r_input = $('.s_popup__radioBtn[data-number='+ this.roomInfo.number +']');
+        r_input.prop('checked', true);
+      }
+    },
+
+    // 숙소 침대가 비어있는지, 꽉차있는지 확인
+    disableRadioBtn:function(fullRoom) {
+      var allWrap = $('#l_popup__bed_room').find('.m_room__wrap');
+      var allRadioBtn = $('#l_popup__bed_room').find('.s_popup__radioBtn');
+      var allRadioBtnBox = $('#l_popup__bed_room').find('.m_field__radioBtn');
+
+      allWrap.removeClass('empty');
+      allRadioBtn.removeAttr('disabled');
+      allRadioBtnBox.removeClass('disabled');
+
+      fullRoom.forEach(function(room) {
+        var fullRadioBtn = $('.s_popup__radioBtn[data-number='+ room +']');
+        var radioBox = fullRadioBtn.siblings('.m_field__radioBtn');
+        var wrap = fullRadioBtn.closest('.m_room__wrap');
+
+        fullRadioBtn.attr('disabled', 'true');
+        radioBox.addClass('disabled');
+        wrap.addClass('empty');
+      });
+    },
+
+    // 종목별 bed 추가 :: 체크박스 클릭시
+    updateAssignSportsBed: function(room, target) {
+      var _this=this;
+      var radioBtn = $(target).siblings('.s_popup__radioBtn');
+
+      if (radioBtn.attr('disabled')) {
+        alert('이 호실은 선택할 수 없습니다. 다른 호실을 선택해 주세요.');
+        return false;
+      }
+
+      _this.clickAssignRoom(room, radioBtn);
+
+      axios.post(_this.api_assign_sports_bed_update,{
+        player_seq: _this.roomInfo.player_seq,
+        center_seq: _this.roomInfo.center_seq,
+        lodging_seq: _this.roomInfo.lodging_seq,
+        room_seq: _this.roomInfo.room_seq,
+        choice: 'Y',
+      }).then(function(response){
+        if(response.data.state=="true"){
+          console.log('종목별 bed update 완료');
+          _this.loadAssignSportsBedList();
+          _this.loadAssignSportsPlayerList(_this.assignList);
+          _this.closePopup('#l_popup__bed_room');
+        }
+      }).catch(function(error){
+        console.log("종목별 bed update error : ");
+        console.log(error);
+      });
+    },
+
+    // 종목별 bed 추가 :: 확인 버튼 클릭시
+    updateAssignSportsBedSave: function() {
+      var _this=this;
+
+      axios.post(_this.api_assign_sports_bed_update,{
+        player_seq: _this.roomInfo.player_seq,
+        center_seq: _this.roomInfo.center_seq,
+        lodging_seq: _this.roomInfo.lodging_seq,
+        room_seq: _this.roomInfo.room_seq,
+        choice: 'Y',
+      }).then(function(response){
+        if(response.data.state=="true"){
+          console.log('종목별 bed update 완료');
+
+          _this.loadAssignSportsPlayerList(_this.assignList);
+          _this.closePopup('#l_popup__bed_room');
+        }
+      }).catch(function(error){
+        console.log("종목별 bed update error : ");
+        console.log(error);
+      });
+    },
+
+    // 종목별 신청 업데이트
+    updateAssignSports:function() {
+      var _this=this;
+      var playerTable = $('.s_sub_list_box');
+      var isError = false;
+      var alert_cmt = '';
+
+      if (_this.checkBoxArr.length == 0) {
+        alert('체크박스로 선택한 후 승인요청 해주세요.');
+        return false;
+      } else {
+        _this.checkBoxArr.forEach(function(item, idx) {
+          axios.post(_this.api_assign_sports_update,{
+            center_seq: item.center_seq,
+            lodging_seq: item.lodging_seq
+          }).then(function(response){
+            if(response.data.state=="true"){
+                alert_cmt = '숙소 배정 승인 요청 하셨습니다.';
+                isError = true;
+              } else {
+              if (!isError) {
+                if (response.data.errorcode == 'ERR-200') {
+                  alert_cmt = '(재)승인요청된 건에 대해서만 승인/재배정 요청 하실 수 있습니다.';
+                }
+
+                if (response.data.errorcode == 'ERR-210') {
+                  alert_cmt = '배정된 숙소가 없습니다.';
+                }
+              }
+              console.log('종목별 update 완료');
+            }
+          }).catch(function(error){
+            console.log("종목별 update error : ");
+            console.log(error);
+          }).finally(function() {
+            if (idx == _this.checkBoxArr.length - 1) {
+              alert(alert_cmt);
+              _this.loadSportsList();
+              playerTable.addClass('hide');
+            }
+          });
+        });
+      }
+    },
+
+    // 체크박스 이벤트
+    clickCheckBoxAll:function() {
+      var _this = this;
+      var checkBoxAll = $('.s_list__checkBox_all');
+      var checkBoxInput = $('.s_list__checkBox');
+      var isChecked = checkBoxAll.prop('checked');
+      var center_seq = '';
+
+      this.checkBoxArr = [];
+
+      if (isChecked) {
+        checkBoxAll.prop('checked', false);
+        checkBoxInput.prop('checked', false);
+      } else {
+        checkBoxAll.prop('checked', true);
+        checkBoxInput.prop('checked', true);
+
+        this.assignInfo.forEach(function(item, idx) {
+          _this.checkBoxArr.push({ 'seq': item.seq, 'lodging_seq' : item.lodging_seq });
+        });
+
+        this.checkBoxArr.forEach(function(item, idx) {
+          axios.post(_this.api_assign_sports_room_list,{
+            seq: item.seq,
+            lodging_seq: item.lodging_seq
+          }).then(function(response){
+            if(response.data.state=="true"){
+              console.log('숙소배정 room 센터 번호');
+              center_seq = response.data.room1[0].center_seq; // 센터가 여러개일 경우 수정. 임시
+            }
+          }).catch(function(error){
+            console.log("숙소배정 room 센터 번호 error : ");
+            console.log(error);
+          }).finally(function() {
+            _this.checkBoxArr[idx] = { 'seq': item.seq, 'lodging_seq' : item.lodging_seq, 'center_seq': center_seq};
+          });
+        });
+      }
+    },
+
+    // 개별 체크박스 체크할 경우
+    clickCheckBox:function(list) {
+      var _this = this;
+      var checkBox = $('.m_list__checkBox');
+      var checkBoxInput = '';
+      var key = list.no - 1;
+      
+      checkBox.each(function(idx) {
+        if (idx == key) {
+          checkBoxInput = $('.s_list__checkBox').eq(key);
+
+          if (checkBoxInput.prop('checked')) {
+            checkBoxInput.prop('checked', false);
+            _this.sortCheckBoxArr(false, list);
+          } else {
+            checkBoxInput.prop('checked', true);
+            _this.sortCheckBoxArr(true, list);
+          }
+        }
+      });
+    },
+
+    // 체크박스 리스트 정렬
+    sortCheckBoxArr:function(flag, list) {
+      var _this = this;
+      var seq = '';
+      var lodging_seq = '';
+      var center_seq = '';
+
+      if (flag) { // 체크했을 때
+        axios.post(_this.api_assign_sports_room_list,{
+          seq: list.seq,
+          lodging_seq: list.lodging_seq
+        }).then(function(response){
+          if(response.data.state=="true"){
+            console.log('숙소배정 room 센터 번호');
+
+            if (response.data.room1.length !== 0) {
+              center_seq = response.data.room1[0].center_seq;
+            }
+            if (response.data.room2.length !== 0) {
+              center_seq = response.data.room2[0].center_seq;
+            }
+            if (response.data.room3.length !== 0) {
+              center_seq = response.data.room3[0].center_seq;
+            }
+            if (response.data.room4.length !== 0) {
+              center_seq = response.data.room4[0].center_seq;
+            }
+          }
+        }).catch(function(error){
+          console.log("숙소배정 room 센터 번호 error : ");
+          console.log(error);
+        }).finally(function() {
+          _this.checkBoxArr.push({ 'lodging_seq' : list.lodging_seq, 'center_seq' : center_seq });
+        });
+      } else { // 체크 해제했을 때
+        seq = list.lodging_seq;
+
+        this.checkBoxArr.forEach(function(arr, idx) {
+          lodging_seq = arr.lodging_seq;
+
+          if (lodging_seq == seq) {
+            _this.checkBoxArr.splice(idx, 1);
+          }
+        });
+      }
+    },
+
+    // 팝업 열기
+    openPopup:function(popup) {
+      $('#l_popup__dimm').addClass('active');
+    },
+
+    // 팝업 닫기
+    closePopup:function(popup) {
+      this.showBedPopup = false;
+      this.showSharePopup = false;
+      $('#l_popup__dimm').removeClass('active');
+      
+      this.roomInfo.number = '';
+      this.roomInfo.bed_info = '';
+      this.roomInfo.isChoice = 'N';
+      this.roomInfo.isAssign = false;
+      $('.s_popup__radioBtn').prop('checked', false);
+    },
+
+    // 테이블 선택 시 hightlight
+    highlight:function(no) {
+      $('.l_list__table_tr').removeClass('highlight');
+      $('.l_list__table_tr').eq(no).addClass('highlight');
+    },
+  },
+
+  mounted:function(){
+    this.getSessionInfo();
+  },
+  created:function(){
+    // 현재 메뉴(위치) 확인
+    eventBus.$emit("menuinfo");
+    eventBus.$emit("menudrop", [9,2]);
+    
+    this.setDate();
+    this.loadSportsList();
+  }
+});
+</script>
+</body>
+</html>

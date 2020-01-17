@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="apple-mobile-web-app-title" content="스포츠다이어리" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="Cache-Control" content="No-Cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="pragma" content="no-store" />
+  <meta http-equiv="Expires" content="-1" />
+
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NotoKR.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NanumGothic.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NanumSquare.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/initialize.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/join.css">
+
+  <script src="front/js/library/jquery/jquery-3.4.1.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/vue.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+</head>
+
+<body>
+  <div id="l_join" v-cloak>
+    <div id="l_join__wrap">
+      <div id="admin_join_box">
+        <div id="in_list">
+          <!-- login mark -->
+          <div class="l_mark">
+              <img src="./front/img/logo_icheon.svg" alt="로고 이미지"/>
+          </div>
+          <!-- login -->
+          <div class="l_join__box_wrap">
+            <div>
+              <p>"안녕하세요.</p>
+              <p>선수가 중심이라는 마음으로</p>
+              <p>미래를 생각하는 이천훈련원 입니다."</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="l_find_pw_board" class="logo s_tab_board__con">
+          <ul class="l_find_board__li">
+            <li class="libtn" class="libtn" v-bind:class="{active: show_tab==1}" @click="show_tab=1;">
+              아이디 찾기
+            </li>
+            <li class="libtn" class="libtn" v-bind:class="{active: show_tab==2}" @click="show_tab=2;">
+              비밀번호 찾기
+            </li>
+          </ul>
+          <div id="l_find__form">
+            <div class="l_find__form l_id" v-if="show_tab==1">
+              <div class="m_form__title">
+                <p>회원 가입시 등록된 회원정보로 아이디를 찾을 수 있습니다.</p>
+                <p>아래 정보를 입력해 주세요.</p>
+              </div>
+              <div class="m_join__field_box">
+                <label for="department">휴대폰 번호</label>
+                <input id="department" class="m_middle_txt" type="text" placeholder="'-'없이 입력해 주세요." />
+              </div>
+              <div class="m_join__field_box">
+                <label for="id">이름</label>
+                <input id="id" class="m_middle_txt" type="text" placeholder="고길동" />
+              </div>
+              <div class="s_find_id" v-show="id_process == true">
+                <span>ID : </span>
+                <span class="s_blue_txt">sampl**center@paralympic.com</span>
+              </div>
+              <div class="m_form__btns">
+                <button class="m_btn s_blue" v-show="id_process == false" @click="id_process = true;" style="margin-right:20px;">아이디 찾기</button>
+                <button class="m_btn s_white" v-show="id_process == false" onclick="location.href='/index.asp';">취소</button>
+                <button class="m_btn s_blue" v-show="id_process == true" onclick="location.href='/index.asp';">로그인 바로가기</button>
+              </div>
+            </div>
+            <div class="l_find__form l_pw" v-if="show_tab==2">
+              <div id="l_pw__process" v-if="pw_process == 0 || pw_process == 1">
+                <div class="m_form__title">
+                  <p>회원 가입시 등록된 회원정보를 확인 후 비밀번호 재설정이 가능합니다.</p>
+                  <p>아래 정보를 입력한 후 확인해 주세요.</p>
+                </div>
+                <div class="m_join__field_box">
+                  <label for="department">아이디</label>
+                  <input id="department" class="m_middle_txt" type="text" placeholder="아이디를 입력해 주세요." />
+                </div>
+                <div class="m_join__field_box">
+                  <label for="department">휴대폰 번호</label>
+                  <input id="department" class="m_middle_txt" type="text" placeholder="'-'없이 입력해 주세요." />
+                </div>
+                <div class="m_join__field_box">
+                  <label for="id">이름</label>
+                  <input id="id" class="m_middle_txt" type="text" placeholder="고길동" />
+                </div>
+                <div class="s_find_pw" v-show="pw_process == '1'">
+                  <span class="s_blue_txt">*휴대폰으로 인증번호가 전송되었습니다.</span>
+                  <div class="m_join__field_box" style="margin-top:15px;">
+                    <label for="department">아이디</label>
+                    <input id="department" class="m_middle_txt" type="text" placeholder="아이디를 입력해 주세요." />
+                  </div>
+                  <div class="m_join__field_box">
+                    <label for="department">휴대폰 번호</label>
+                    <input id="department" class="m_middle_txt" type="text" placeholder="000-0000-0000" />
+                  </div>
+                </div>
+                <div class="m_form__btns">
+                  <button class="m_btn s_blue" v-show="pw_process == '0'" @click="pw_process = '1';" style="margin-right:20px;">정보 확인</button>
+                  <button class="m_btn s_blue" v-show="pw_process == '1'" @click="pw_process = '2';" style="margin-right:20px;">비밀번호 재설정</button>
+                  <button class="m_btn s_white" v-show="pw_process == '0' || pw_process == '1'" onclick="location.href='/index.asp';">취소</button>
+                </div>
+              </div>
+              <div id="l_pw__success" v-else>
+                <p class="s_blue_txt">비밀번호가 변경되었습니다.</p>
+                <div class="m_form__btns">
+                  <button class="m_btn s_blue" onclick="location.href='/index.asp';">로그인 바로가기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="l_notice">
+          <span class="copy_text" style="margin-right:30px;">온라인 입퇴촌 신청 사용문의/장애처리</span>
+          <span class="copy_text" style="margin-right:40px;">전화 : 041)589-0940</span>
+          <span class="copy_text">내선 : 102</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+
+var l_join = new Vue({
+  el:'#l_join',
+  data:{
+    show_tab: '1',
+
+    id_process: false,
+    pw_process: '0',
+  },
+  watch:{
+
+  },
+  methods:{
+    applyJoin:function() {
+      this.join_success = true;
+    },
+  },
+  mounted:function(){
+
+  },
+  created:function(){
+  }
+});
+</script>
+</body>
+</html>

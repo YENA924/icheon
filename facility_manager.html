@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>이천훈련원 관리자 로그인</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="apple-mobile-web-app-title" content="스포츠다이어리" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="Cache-Control" content="No-Cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="pragma" content="no-store" />
+  <meta http-equiv="Expires" content="-1" />
+
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/initialize.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/main.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/page.css">
+
+  <script src="front/js/library/jquery/jquery-3.4.1.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/vue.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+  <!--[if lt IE 9]>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	<![endif]-->
+  <!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+  <script>
+    // $(document).ready(function () {
+    //   // 시작
+    //   var page = ['main'];
+    //   ADMIN.init.start(page);
+    // });
+  </script>
+  <style>
+    .m_search__title:after {
+      content: "";
+      display: block;
+      border-bottom: #525765 1px solid;
+      width: calc(100% - 35px);
+      margin: 15px 1%;
+    }
+
+    .m_search__panel {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    .m_search__item_wrap {
+      flex-wrap: wrap;
+    }
+
+    .m_search__panel {
+      margin-top: 24px;
+      padding-bottom: 20px;
+    }
+
+    .m_serach__item {
+      padding-bottom: 10px;
+    }
+
+    .m_serach__item span {
+      width: 106px;
+      display: inline-block;
+      text-align: right;
+      margin-right: 15px;
+    }
+
+    .m_serach__item_select_box {
+      width: 179px;
+      height: 36px;
+    }
+
+    .m_tr {
+      text-align: center;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .m_tr.active {
+      border: 1px solid #FF8000;
+      border-width: 1px 1px 1px 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="l_header">
+    <div class="m_logo">
+      <img src="./front/img/admin-log.png" width="30.52" />
+      <span>이천훈련원</span>
+    </div>
+    <div class="m_logout"
+      style="background-color: #fff;vertical-align: middle;display: inline-block;float: right;margin-top: 15px;">
+      <button id="btnLogout" class="btn_logout" style="color:#000;border:none;">로그아웃 (임시)</button>
+    </div>
+  </div>
+  <aside id="l_left_nav">
+    <div id="navBar" class="l_navbar">
+      <!-- <div class="m_navMenu__wrap">
+				<a href="#" class="m_navMenu s_navMenu">훈련원 시설 관리</a>
+				<div class="m_navMenu__sub_wrap s_navMenu__sub_wrap">
+					<a href="#" class="m_navMenu__sub">시설 현황 등록</a>
+					<a href="#" class="m_navMenu__sub">기구 현황 등록</a>
+					<a href="#" class="m_navMenu__sub">훈련원 시설 관리 현황</a>
+				</div>
+			</div>-->
+    </div>
+  </aside>
+  <div id="l_content">
+    <div id="l_content__title">
+      <p style="display: inline-block;"><img src="./front/img/home_icon.png"></p>
+      <p style="display: inline-block;">Home</p>
+      <p style="display: inline-block;"> > </p>
+      <p style="display: inline-block;">훈련원 시설관리</p>
+      <p style="display: inline-block;"> > </p>
+      <p style="display: inline-block;">시설 현황 등록</p>
+    </div>
+    <div id="l_content__wrap" style="position:relative; background: #F2F2F2;width: 100%; height: 100%;">
+      <div id="l_content__page" style="position:relative; padding-top: 30px;padding-left:50px;">
+        <div id="l_content__search"
+          style="position:relative; max-width: 1620px;background: #E0E5F2;padding-top: 15px;padding-left: 20px;padding-right: 15px;box-sizing: border-box;">
+          <div class="m_search__title" style="">
+            <p style="font-family:'NanumSquare-exb', sans-serif; font-size:1.5em;display: inline-block;">시설
+              정보 관리</p>
+            <div class="m_search__btn_group m_right" style="float: right;">
+              <a href="#">신규</a>
+              <a href="#">삭제</a>
+              <a href="#">저장</a>
+            </div>
+          </div>
+          <div class="m_search__panel" style="position:relative; max-width: 1145px;">
+            <div class="m_serach__item_wrap">
+              <div class="m_serach__item">
+                <span>동/관</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option v-for="(quarter,key) in facilitySelectedItemList.quarter" :key="key" :value="quarter.seq">{{quarter.title}}</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>이용대상/종목</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option v-for="(use,key) in facilitySelectedItemList.use" :key="key" :value="use.seq">{{use.title}}</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>내선번호</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+            </div>
+            <div class="m_serach__item_wrap">
+              <div class="m_serach__item">
+                <span>층</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option v-for="(floor,key) in facilitySelectedItemList.floor" :key="key" :value="floor.seq">{{floor.title}}</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>정원</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>단가</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+            </div>
+            <div class="m_serach__item_wrap">
+              <div class="m_serach__item">
+                <span>호실</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>관리부서</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+              <div class="m_serach__item">
+                <span>비고</span>
+                <select name="" class="m_serach__item_select_box">
+                  <option value="">a</option>
+                  <option value="">b</option>
+                  <option value="">c</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="l_content__table" style="position:relative;min-width: 1620px;margin-top: 30px;">
+          <div class="m_content__excel">
+            <a href="#">액셀 다운</a>
+          </div>
+          <table style="width:1620px;">
+            <thead style="background: #6E727C;color: #fff;">
+              <tr style="text-align: center;">
+                <th style="padding:7px 0;">No.</th>
+                <th>코드</th>
+                <th>동/관</th>
+                <th>층</th>
+                <th>호실</th>
+                <th>이용대상/종목</th>
+                <th>정원</th>
+                <th>단가(원)</th>
+                <th>관리부서</th>
+                <th>내선번호</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody class="m_tbody">
+              <tr class="m_tr" v-for="(list,key) in facilityList" :key="key" @click="attachClickTableEvt(key, $event)">
+                <td style="padding: 19px 0;">{{ list.seq }}</td>
+                <td>{{ list.code }}</td>
+                <td>{{ list.quarter }}</td>
+                <td>{{ list.floor }}</td>
+                <td>{{ list.number }}</td>
+                <td>{{ list.use }}</td>
+                <td>{{ list.use_seq }}</td>
+                <td>{{ list.price }}</td>
+                <td>{{ list.department }}</td>
+                <td>{{ list.extension }}</td>
+                <td>{{ list.relative }}</td>
+              </tr>
+              <!-- <tr class="m_tr" style="text-align: center;background: #fff;">
+                <td style="padding: 19px 0;">1</td>
+                <td>011001</td>
+                <td>생활관(01)</td>
+                <td>1</td>
+                <td>101</td>
+                <td>C</td>
+                <td>2</td>
+                <td>20,000</td>
+                <td>시설관리부</td>
+                <td>031-666-6000</td>
+                <td>-</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <div class="m_pagination__list s_pagination__list">
+          <ul>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  var api_facility_list='http://ic.sportsdiary.co.kr/api/facility_manager/facility_list.asp';
+  var api_facility_add='http://ic.sportsdiary.co.kr/api/main/reservation.asp';
+  var api_facility_modify='http://ic.sportsdiary.co.kr/api/loginout/login.asp';
+  var api_selected_item='http://ic.sportsdiary.co.kr/api/menu_control/selected_item.asp';
+  
+  var page=new Vue({
+    el:'#l_content__wrap',
+    data:{
+      facilitySelectedItemList : [],
+      facilityList : [],
+    },
+    watch:{
+
+    },
+    methods:{
+      // axios 불러오기
+      // 로그인 세션 확인
+      sessionCheck:function() {
+        this.groupCode = sessionStorage.getItem('groupcode');
+
+        // 세션 키가 없을 때
+        if (!this.groupCode && this.groupCode == null) {
+            alert('세션이 만료되었습니다. 다시 로그인 해주세요.');
+            location.href = '/index.html';
+            // location.href = "/index.html"; // 서버용
+            return false;
+        } else { // 있을 때
+            return true;
+        }
+      },
+
+      // select item 가져오기
+      loadSelectItemList: function(url) {
+        var _this=this;
+
+        axios.post(url,{
+          step1:"2",
+          step2:"1"
+        }).then(function(response){
+          if(response.data.state == 'true'){
+            console.log('시설현황 select item 로드 완료');
+            _this.facilitySelectedItemList = response.data;
+          }
+        }).catch(function(error){
+          console.log('loadSelectItemList error : ');
+          console.log(error);
+        });
+      },
+
+      // 시설현황관리 가져오기
+      loadFacilityList: function(url) {
+        var _this=this;
+
+        axios.post(url,{
+        }).then(function(response){
+          if(response.data.state == 'true'){
+            console.log('시설현황 로드 완료');
+            _this.facilityList = response.data.facility;
+            // _this.createList();
+            // _this.notice_totalpage=Number(response.data.totalpage);
+          }
+        }).catch(function(error){
+          console.log('loadFacilityList error : ');
+          console.log(error);
+        });
+      },
+
+      // 내비게이션 메뉴 만들기
+      // createList: function() {
+      //   var listWraps = document.getElementsByClassName('m_tbody');
+      //   var listWrap = '', listEl;
+      //   var listInner = '';
+      //   var list = this.facilityList;
+
+      //   for (var i = 0; i < listWraps.length; i++){
+      //     listWrap = listWraps[i];
+
+      //     for (var j = 0; j < list.length; j++) {
+      //       listEl = list[j];
+
+      //       listInner += '<tr class="m_tr" style="text-align: center;background: #fff;">';
+      //       listInner += '<td class="m_td" style="padding: 19px 0;">'+ listEl.seq +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.code +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.quarter +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.floor +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.number +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.use +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.use_seq +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.price +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.department +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.extension +'</td>';
+      //       listInner += '<td class="m_td">'+ listEl.relative +'</td>';
+      //       listInner += '</tr>';
+      //     }
+
+      //     listWrap.innerHTML += listInner;
+      //   }
+      // },
+
+      // 테이블 클릭 이벤트
+      attachClickTableEvt: function(key, event) {
+        var tr = $('.m_tr');
+        var clickTr = $(event.target).closest('.m_tr');
+        
+        tr.removeClass('active');
+        clickTr.addClass('active');
+      },
+    },
+    mounted:function(){
+      var isLogin = this.sessionCheck();
+      if (isLogin) {
+        this.loadSelectItemList(api_selected_item);
+        this.loadFacilityList(api_facility_list);
+      }
+    },
+    created:function(){
+    }
+  });
+  </script>
+</html>

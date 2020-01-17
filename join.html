@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="apple-mobile-web-app-title" content="이천훈련원" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>이천훈련원</title>
+
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NotoKR.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NanumGothic.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/fonts/NanumSquare.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/initialize.css">
+  <link rel="stylesheet" type="text/css" href="./front/css/admin/join.css">
+
+  <script src="front/js/library/jquery/jquery-3.4.1.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/vue.min.js"></script>
+  <script src="http://img.sportsdiary.co.kr/lib/vue/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+</head>
+
+<body>
+  <div id="l_join" v-cloak>
+    <div id="l_join__wrap">
+      <div id="admin_join_box">
+        <div id="in_list">
+          <!-- login mark -->
+          <div class="l_mark">
+              <img src="./front/img/logo_icheon.svg" alt="로고 이미지"/>
+          </div>
+          <!-- login -->
+          <div class="l_join__box_wrap">
+            <div>
+              <p>"안녕하세요.</p>
+              <p>선수가 중심이라는 마음으로</p>
+              <p>미래를 생각하는 이천훈련원 입니다."</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="l_join_board" class="logo s_tab_board__con">
+          <div class="m_join__title">
+            <h1>회원가입신청</h1>
+          </div>
+          <div id="l_join__form" v-if="!join_success">
+            <div class="m_join__field_box">
+              <label for="department">소속단체명</label>
+              <input id="department" class="m_large_txt" type="text" />
+            </div>
+            <div class="m_join__field_box">
+              <div class="m_join__field">
+                <label for="name">이름</label>
+                <input id="name" class="m_small_txt" type="text" placeholder="고길동"/>
+              </div>
+              <div class="m_join__field">
+                <label for="email">이메일</label>
+                <input id="email" class="m_small_txt" type="text" placeholder="sample@naver.com"/>
+              </div>
+              <div class="m_join__field">
+                <label for="telephone">유선전화번호</label>
+                <input id="telephone" class="m_small_txt" type="text" placeholder="00-000-0000"/>
+              </div>
+            </div>
+            <div class="m_join__field_box">
+              <label for="id">ID</label>
+              <input id="id" class="m_small_txt" type="text" placeholder="아이디를 입력해 주세요." />
+            </div>
+            <div class="m_join__field_box">
+              <div class="m_join__field">
+                <label for="pw">PW</label>
+                <input id="pw" class="m_small_txt" type="password"  placeholder="비밀번호 6~12자리 영문+숫자 조합"/>
+              </div>
+              <div class="m_join__field">
+                <label for="pwChk">PW 확인</label>
+                <input id="pwChk" class="m_small_txt" type="password" placeholder="비밀번호를 재입력 하세요."/>
+              </div>
+            </div>
+            <div class="m_join__field_box">
+              <label for="phone">휴대폰 번호</label>
+              <input id="phone" class="m_small_txt" type="text" placeholder="000-0000-0000"/>
+              <button id="phone_btn" class="m_form__btn s_gray">인증번호 받기</button>
+            </div>
+            <div class="m_join__field_box">
+              <label for="security_num">인증번호 입력</label>
+              <input id="security_num" class="m_small_txt" type="text" placeholder="인증번호를 입력하세요."/>
+              <button id="security_num_btn" class="m_form__btn s_gray">인증 하기</button>
+            </div>
+            <div class="m_form__btns">
+              <button class="m_btn s_blue" @click="applyJoin()" style="margin-right:20px;">회원 가입 신청</button>
+              <button class="m_btn s_white" onclick="location.href='/index.asp';">취소</button>
+            </div>
+          </div>
+          <div class="m_join__success" v-if="join_success">
+            <div class="m_join__success_notice">
+              <p class="s_blue_txt">회원가입 신청이 완료되었습니다 !</p>
+              <p>가입 승인여부는 승인과 동시에 메일 혹은 문자로 발송됩니다.</p>
+            </div>
+            <div class="m_form__btns">
+              <button class="m_btn s_blue" onclick="location.href='/index.asp';">확인</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="l_notice">
+          <span class="copy_text" style="margin-right:30px;">온라인 입퇴촌 신청 사용문의/장애처리</span>
+          <span class="copy_text" style="margin-right:40px;">전화 : 041)589-0940</span>
+          <span class="copy_text">내선 : 102</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+
+var l_join = new Vue({
+  el:'#l_join',
+  data:{
+    join_success: false, // 회원가입 성공
+  },
+  watch:{
+
+  },
+  methods:{
+    applyJoin:function() {
+      this.join_success = true;
+    },
+  },
+  mounted:function(){
+
+  },
+  created:function(){
+  }
+});
+</script>
+</body>
+</html>

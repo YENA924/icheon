@@ -1,0 +1,109 @@
+/* init */
+html {
+	font-size: 16px;
+	font: inherit;
+	vertical-align: baseline;
+	min-height: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'NotoKR', sans-serif;
+	font-size: 16px;
+	background-color: #E2E5EE;
+	min-width: 1920px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 100%;
+}
+
+/* header */
+#l_header {
+	position: relative;
+	display: block;
+	width: 100%;
+	min-height: 80px;
+	background-color: #404040;
+	z-index: 1;
+}
+
+#l_header .m_logo {
+	height: 50px;
+	display: inline-block;
+	padding-left: 24px;
+	padding-top: 15.76px;
+}
+
+/* nav menu :: left */
+#l_left_nav {
+	position: absolute;
+	min-width: 220px;
+	height: 100%;
+	top: 0;
+	background: url('../../img/admin-background.png') no-repeat;
+	display: inline-block;
+	background-size: cover;
+}
+
+.l_navbar {
+	padding-top: 120px;
+	color: #fff;
+	font-size: 1em;
+	letter-spacing: 0;
+}
+
+.l_navbar .m_navMenu__title {
+	font-family: 'NanumSquare-b', sans-serif;
+	font-weight: normal;
+	font-size: 0.875em;
+	padding: 8px 0;
+	padding-left: 40px;
+}
+
+.m_navMenu__wrap .m_navMenu {
+	display: block;
+	padding: 8px 0;
+	padding-left: 40px;
+}
+
+.m_navMenu__wrap .m_navMenu__sub_wrap .m_navMenu__sub {
+	font-size: 0.875em;
+	display: block;
+	padding: 8px 0;
+	padding-left: 40px;
+}
+
+.m_navMenu.active {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.m_navMenu__sub_wrap {
+	display: none;
+}
+
+.m_navMenu__sub_wrap.active {
+	/* display: block; */
+	background-color: #463653;
+}
+
+/* content */
+#l_content {
+	position: relative;
+	min-height: 1080px;
+	height: 100%;
+	margin-left: 220px;
+	background-color: #F2F2F2;
+}
+
+#l_content__title {
+	display: block;
+	background-color: #F3F3F5;
+	padding: 13px;
+}
+
+#l_content__default {
+	/* display: inline-block; */
+	background-color: #F3F3F5;
+	margin: 50px;
+}

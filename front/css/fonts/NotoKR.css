@@ -1,0 +1,59 @@
+@font-face {
+	font-family: 'NotoKR';
+	font-style: normal;
+	font-weight: 300;
+	src: url(./NotoSans/NotoKR-DemiLight/notokr-demilight.eot);
+	src: url(./NotoSans/NotoKR-DemiLight/notokr-demilight.eot?#iefix) format('embedded-opentype'),
+		url(./NotoSans/NotoKR-DemiLight/notokr-demilight.woff2) format('woff2'),
+		url(./NotoSans/NotoKR-DemiLight/notokr-demilight.woff) format('woff'),
+		url(./NotoSans/NotoKR-DemiLight/notokr-demilight.ttf) format('truetype');
+	src: local(※), url(./NotoSans/NotoKR-DemiLight/notokr-demilight.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'NotoKR';
+	font-style: normal;
+	font-weight: 400;
+	src: url(./NotoSans/NotoKR-Regular/notokr-regular.eot);
+	src: url(./NotoSans/NotoKR-Regular/notokr-regular.eot?#iefix) format('embedded-opentype'),
+		url(./NotoSans/NotoKR-Regular/notokr-regular.woff2) format('woff2'),
+		url(./NotoSans/NotoKR-Regular/notokr-regular.woff) format('woff'),
+		url(./NotoSans/NotoKR-Regular/notokr-regular.ttf) format('truetype');
+	src: local(※), url(./NotoSans/NotoKR-Regular/notokr-regular.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'NotoKR';
+	font-style: normal;
+	font-weight: 500;
+	src: url(./NotoSans/NotoKR-Medium/notokr-medium.eot);
+	src: url(./NotoSans/NotoKR-Medium/notokr-medium.eot?#iefix) format('embedded-opentype'),
+		url(./NotoSans/NotoKR-Medium/notokr-medium.woff2) format('woff2'),
+		url(./NotoSans/NotoKR-Medium/notokr-medium.woff) format('woff'),
+		url(./NotoSans/NotoKR-Medium/notokr-medium.ttf) format('truetype');
+	src: local(※), url(./NotoSans/NotoKR-Medium/notokr-medium.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'NotoKR';
+	font-style: normal;
+	font-weight: 700;
+	src: url(./NotoSans/NotoKR-Bold/notokr-bold.eot);
+	src: url(./NotoSans/NotoKR-Bold/notokr-bold.eot?#iefix) format('embedded-opentype'),
+		url(./NotoSans/NotoKR-Bold/notokr-bold.woff2) format('woff2'),
+		url(./NotoSans/NotoKR-Bold/notokr-bold.woff) format('woff'),
+		url(./NotoSans/NotoKR-Bold/notokr-bold.ttf) format('truetype');
+	src: local(※), url(./NotoSans/NotoKR-Bold/notokr-bold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'NotoKR';
+	font-style: normal;
+	font-weight: 900;
+	src: url(./NotoSans/NotoKR-Black/notokr-black.eot);
+	src: url(./NotoSans/NotoKR-Black/notokr-black.eot?#iefix) format('embedded-opentype'),
+		url(./NotoSans/NotoKR-Black/notokr-black.woff2) format('woff2'),
+		url(./NotoSans/NotoKR-Black/notokr-black.woff) format('woff'),
+		url(./NotoSans/NotoKR-Black/notokr-black.ttf) format('truetype');
+	src: local(※), url(./NotoSans/NotoKR-Black/notokr-black.woff) format('woff');
+}
