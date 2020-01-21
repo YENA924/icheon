@@ -268,6 +268,12 @@
 
         // 번호 변경 확인
         if(bo==="ok"){
+          var reg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,30}$/;
+          if(!reg.test(_this.pw_new)){
+            alert("비밀번호는 8자 이상 30자 이하 영문+숫자+특수문자 포함입니다");
+            return;
+          }
+
           if(_this.pw_new!==_this.pw_re){
             alert("새 비밀번호를 확인해 주십시오");
             return;
@@ -391,6 +397,12 @@
         // 번호 변경 확인
         if(bo==="ok"){
           if(_this.info_update===true){
+            var reg=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(!reg.test(_this.email)){
+              alert("이메일을 확인해주세요");
+              return;
+            }
+
             if(_this.email=="" || _this.name=="" || _this.phone==""){
               alert("모든 정보를 입력해주세요");
               return;

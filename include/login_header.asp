@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="./front/css/admin/initialize.css">
 	<link rel="stylesheet" type="text/css" href="./front/css/admin/admin-login.css">
 	<link rel="stylesheet" type="text/css" href="./front/css/library/flatpickr/flatpickr.min.css">
-  
+
 	<script src="/front/js/library/flatpickr/flatpickr.js"></script>
 	<script src="/front/js/library/flatpickr/language_ko.js"></script>
 	
@@ -41,6 +41,12 @@
 		},7);
 	}
 iecheckTimer();
+
+$(document).ready(function() {
+	var random = Math.random() * (5 - 1) + 1;
+
+	document.body.style.backgroundImage = "url('./front/img/login-background"+ Math.floor(random) +".png')";
+});
 </script>
 <body>
 	<h1 class="hidden">이천훈련원</h1>

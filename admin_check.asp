@@ -281,7 +281,7 @@
         <div class="l_search_field">
           <div class="l_field">
             <label for="pw">PW</label>
-            <input type="password" id="pw" name="pw" class="pw" placeholder="비밀번호 6~12자의 영문+숫자 조합" value="" v-model="pw"/>
+            <input type="password" id="pw" name="pw" class="pw" placeholder="비밀번호 8~20자의 영문+숫자 조합" value="" v-model="pw"/>
           </div>
           <div class="l_field">
             <label for="pw_check">PW 확인</label>
@@ -419,7 +419,7 @@ var cont = new Vue({
           return false;
         }
         if (_this.CheckPass(_this.pw) == false){
-          alert('비밀번호 6~12자리 영문+숫자조합 입니다. 다시 입력해주세요.');
+          alert('비밀번호 8~20자리 영문+숫자조합 입니다. 다시 입력해주세요.');
           return false;
         }
         if (_this.pw !== _this.pwChk){
@@ -444,7 +444,7 @@ var cont = new Vue({
 
       // 패스워드 유효성 검사
       CheckPass:function(str){
-        var reg1 = /^[a-z0-9]{6,12}$/;
+        var reg1 = /^[a-z0-9]{8,20}$/;
         var reg2 = /[a-z]/g;
         var reg3 = /[0-9]/g;
         return(reg1.test(str) &&  reg2.test(str) && reg3.test(str));

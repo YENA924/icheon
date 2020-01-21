@@ -10,8 +10,9 @@ body {
 	-webkit-box-sizing: border-box;
 	line-height: 100%;
 	font-size: 14px;
-	background: url('../../img/login-background.png') no-repeat fixed;
-	/* background: url('../../img/login-background.png') center center no-repeat fixed; */
+	/* background-image: url('../../img/login-background.png'); */
+	background-repeat:no-repeat; 
+	background-attachment:fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

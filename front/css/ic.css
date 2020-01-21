@@ -1038,6 +1038,7 @@ td>label{display:block;}
 
 /* 훈련계획서 작성 */
 /* 공통 */
+.l_trainig_plan_write .l_list_box{margin-top: 0.8rem;}
 .l_trainig_plan_write .l_list_tablewrap input[type="checkbox"]{display: none;}
 .l_trainig_plan_write .l_list_tablewrap i {width:20px;height:20px;background: url(../img/chk_box.png) left center no-repeat;display: inline-block;margin-top:4px;cursor: pointer;}
 .l_trainig_plan_write .l_list_tablewrap input[type="checkbox"]:checked + i {background: url(../img/chk_active.png) left center no-repeat;}
@@ -1052,10 +1053,11 @@ td>label{display:block;}
 .l_trainig_plan_write .l_select_box_field .l_field {display: inline-block;}
 
 /* 관리자 */
-.l_trainig_plan_write.l_admin .l_list_box {margin-top:11px;}
+.l_trainig_plan_write.l_admin .l_list_box {margin-top:0.8rem;}
 .l_trainig_plan_write.l_admin .l_list_btns {text-align: right;}
 .l_trainig_plan_write.l_admin .l_list_tablewrap {max-height: 390px;overflow-y: auto;}
-.l_trainig_plan_write.l_admin .m_field__wave {font-size: 20px;vertical-align: bottom;margin: 0 30px;}
+.l_trainig_plan_write.l_admin .l_field__wave {display: inline-block;vertical-align: bottom;margin: 0 30px;}
+.l_trainig_plan_write.l_admin .m_field__wave {height: 2.5rem;font-size: 2.6rem;line-height: 2.9rem;}
 
 .l_trainig_plan_write.l_admin .l_list_box .l_search_btns {position: relative;background: #fff;top:0;border-top:1px dotted #6a7b85;text-align: right;padding:0.7rem;}
 .l_trainig_plan_write.l_admin .l_list_tablewrap tbody tr.active {background-color:#fff0a4;}
@@ -1110,7 +1112,7 @@ td>label{display:block;}
 .m_trainig_plan__popup .m_content__text.readonly {padding-left:0;}
 .m_trainig_plan__popup .m_content__text textarea {width:480px;height: 100px;resize: none;border: 1px solid #B7B7B7;}
 
-.m_trainig_plan__popup .l_search_btns {border-top:none;padding-top:0;}
+.m_trainig_plan__popup .l_search_btns {border-top:none;padding-top:20px;}
 .m_trainig_plan__popup .l_popup_btns {text-align: center;}
 .m_trainig_plan__popup .l_search_btns .m_center_btns {display:inline-block;margin-left:300px;}
 .m_trainig_plan__popup .l_search_btns .m_center_btns.m_center {display: block;margin-left:0; text-align: center;}
@@ -1159,12 +1161,13 @@ td>label{display:block;}
 /* 공지사항 */
 /* 콘텐츠 */
 .l_notice a {cursor:pointer;text-decoration: underline;}
-.l_notice .l_list_box {margin-top:11px;}
+.l_notice .l_content h2 {display: inline-block;}
+.l_notice .l_list_box {margin-top:0.8rem;}
 .l_notice .l_list_tablewrap {max-height: 729px;}
 .l_notice .l_list_tablewrap .s_bold {font-weight: 600;}
 .l_notice .l_notice_list td:nth-of-type(5){white-space: nowrap;overflow: hidden;text-overflow: ellipsis;word-wrap: break-word;width: 433px;max-width: 433px;display:inline-block;text-align: left;}
 .l_notice .l_notice_list td:nth-of-type(8){text-align: left;}
-.l_notice .l_search_btns {border-top: none;text-align: right;margin-top: 0;}
+.l_notice .l_search_btns {border-top: none;text-align: right;margin-top: 0;padding-top: 0;float: right;}
 
 /* 공지사항 등록 팝업 */
 .m_notice__popup {position: absolute;top:0;width:930px;padding-bottom: 30px;left:265px;}

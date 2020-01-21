@@ -431,7 +431,7 @@ label {
 }
 
 .l_join__box_wrap p {
-	font-weight:600;
+	font-weight:700;
 	font-size: 20px;
 	line-height: 30px;
 }
@@ -459,7 +459,7 @@ label {
 .m_join__field_box label {
 	display: block;
 	margin-bottom:3px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
 }
 
@@ -489,7 +489,7 @@ label {
 }
 
 .m_join__field_box input:disabled {
-	font-weight: 600;
+	font-weight: 700;
 	background-color: rgb(238 242 245);
 	color: #136da8;
 }
@@ -528,7 +528,7 @@ label {
 	height:34px;
 	border-radius: 17px;
 	font-size: 18px;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 /* 회원가입 성공 */
@@ -547,7 +547,7 @@ label {
 
 .m_join__success p {
 	font-size: 30px;
-	font-weight: 600;
+	font-weight: 700;
 	margin-bottom: 60px;
 }
 
@@ -559,7 +559,7 @@ label {
 .l_find_board__li .libtn {
 	min-width:360px;
 	float: left;
-	font-family: 'NotoKR', sans-serif;
+	font-family: 'Noto KR', sans-serif;
 	font-size: 30px;
 	color: #A9BAC4;
 	text-align: center;
@@ -569,7 +569,7 @@ label {
 	background:rgba(255,255,255);
 	cursor: pointer;
 	letter-spacing: 0;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 .l_find_board__li .libtn.active {
@@ -617,7 +617,7 @@ label {
 
 .s_find_id span {
 	font-size: 30px;
-	font-weight: 600;
+	font-weight: 700;
 	color:#707070;
 }
 
@@ -627,7 +627,7 @@ label {
 
 .s_find_pw span {
 	font-size: 20px;
-	font-weight: 600;
+	font-weight: 700;
 	color:#707070;
 	margin-bottom: 24px;
 }

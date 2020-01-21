@@ -1,6 +1,5 @@
 <!--#include virtual="/include/login_header.asp"-->
 
-<body>
 <div id="l_login" v-cloak>
     <div id="l_login__wrap">
     <div id="admin_login_box">
@@ -160,11 +159,6 @@
 </div>
 
 <script>
-var api_notice='http://ic.sportsdiary.co.kr/api/main/notice.asp';
-var api_reservation='http://ic.sportsdiary.co.kr/api/main/reservation.asp';
-var api_login='http://ic.sportsdiary.co.kr/api/loginout/login.asp';
-var api_loginChk = 'http://ic.sportsdiary.co.kr/api/loginout/loginChk.asp';
-
 var l_login = new Vue({
   el:'#l_login',
   data:{
@@ -198,7 +192,7 @@ var l_login = new Vue({
   watch:{
     // 대관현황 날짜 선택
     reservation_date:function(){
-      this.loadReservation(api_reservation);
+      this.loadReservation(this.api_reservation);
     },
   },
   methods:{
@@ -288,7 +282,7 @@ var l_login = new Vue({
       var apw = $('#adminPw');
       var _this=this;// ie
 
-      axios.post(api_login,{
+      axios.post(_this.api_login,{
         userid:_this.adminId,
         userpw:apw.val()
       }).then(function(response){
@@ -314,7 +308,7 @@ var l_login = new Vue({
     // 로그인 세션 확인
     loginSessionChk:function() {
       var _this=this;
-      axios.post(api_loginChk,{
+      axios.post(_this.api_loginChk,{
         loginChk: _this.loginCheck
       }).then(function(response){
           if(response.data.State=="true"){
@@ -468,7 +462,7 @@ var l_login = new Vue({
   },
   mounted:function(){
     this.loadNotice();
-    this.loadReservation(api_reservation);
+    this.loadReservation(this.api_reservation);
     this.loadCalendar();
   },
   created:function(){

@@ -16,7 +16,9 @@
             <input type="text" name="sdate" id="sdate" class="sdate" placeholder="날짜선택" v-model="sdate">
             <button class="l_btn_calendar"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
           </div>
-          <span class="m_field__wave">&#126;</span>
+          <div class="l_field__wave">
+            <span class="m_field__wave">&#126;</span>
+          </div>
           <div class="l_field">
             <input type="text" name="edate" id="edate" class="edate" title="조회 종료 날짜 선택" placeholder="날짜선택" v-model="edate">
             <button class="l_btn_calendar"><img src="/front/img/icon_calendar.svg" alt="달력선택"></button>
@@ -41,7 +43,7 @@
       </div>
   
         <!-- 목록 테이블 형식. s. -->
-        <div class="l_list_box" style="margin-top:11px;">
+        <div class="l_list_box" style="margin-top:-19px;">
           <div class="l_list_btns">
             <button class="l_btn_download" @click="nav.excelDown('exceldown', '훈련계획서')">엑셀다운<span class="img"><img src="/front/img/icon_arrow_down.svg" alt=""></span></button>
           </div>
